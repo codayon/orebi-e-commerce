@@ -13,18 +13,18 @@ const Ads = () => {
           <ImageWrapper
             src={AdImgOne}
             alt="AdImgOne"
-            className={"cursor-pointer"}
+            className={"cursor-pointer aspect-square"}
           />
           <Flex className={"flex-col gap-y-10"}>
             <ImageWrapper
               src={AdImgTwo}
               alt="AdImgTwo"
-              className={"cursor-pointer"}
+              className={"cursor-pointer aspect-[784/370]"}
             />
             <ImageWrapper
               src={AdImgThree}
               alt="AdImgThree"
-              className={"cursor-pointer"}
+              className={"cursor-pointer aspect-[784/370]"}
             />
           </Flex>
         </Flex>

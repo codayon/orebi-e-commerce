@@ -7,7 +7,7 @@ const Banner = () => {
       <ImageWrapper
         src={BannerSrc}
         alt="Website Banner"
-        className={"cursor-pointer"}
+        className={"cursor-pointer aspect-[1920/605]"}
       />
     </section>
   );
