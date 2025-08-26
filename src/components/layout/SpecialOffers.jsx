@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Container from "../common/Container";
 import Flex from "../common/Flex";
 import ProductCard from "../common/ProductCard";
