@@ -2,17 +2,19 @@ import { useState, useEffect } from "react";
 import Container from "../common/Container";
 import Flex from "../common/Flex";
 import ProductCard from "../common/ProductCard";
+import SkeletonCard from "../common/SkeletonCard";
 
 const NewArrivals = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://dummyjson.com/products?limit=4")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.products);
-      })
-      .catch((error) => console.error("Error fetching products:", error));
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -20,20 +22,13 @@ const NewArrivals = () => {
       <Container>
         <h4 className="text-black-a font-bold text-4xl">New Arrivals</h4>
         <Flex className={"justify-between pt-12"}>
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              src={product.thumbnail}
-              alt={product.title}
-              productName={product.title}
-              price={`$${product.price.toFixed(2)}`}
-              badgeName={
-                product.discountPercentage > 0
-                  ? `${Math.round(product.discountPercentage)}%`
-                  : "New"
-              }
-            />
-          ))}
+          {loading
+            ? Array.from({ length: 4 }).map((_, idx) => (
+                <SkeletonCard key={idx} />
+              ))
+            : products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
         </Flex>
       </Container>
     </section>

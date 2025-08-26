@@ -3,17 +3,19 @@ import axios from "axios";
 import Container from "../common/Container";
 import Flex from "../common/Flex";
 import ProductCard from "../common/ProductCard";
+import SkeletonCard from "../common/SkeletonCard";
 
 const SpecialOffers = () => {
-  const [myProd, setMyProd] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    async function allProd() {
-      const response = await axios.get(
-        "https://dummyjson.com/products?limit=4&skip=8"
-      );
-      setMyProd(response.data.products);
-    }
-    allProd();
+    fetch("https://dummyjson.com/products?limit=4&skip=8")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data.products);
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -21,21 +23,13 @@ const SpecialOffers = () => {
       <Container>
         <h4 className="text-black-a font-bold text-4xl ">Special Offers</h4>
         <Flex className={"justify-between py-12"}>
-          {myProd.map((item) => (
-            <div key={item.id} className="px-3 py-5">
-              <ProductCard
-                src={item.thumbnail}
-                alt={item.title}
-                productName={item.title}
-                price={`$${item.price.toFixed(2)}`}
-                badgeName={
-                  item.discountPercentage > 0
-                    ? `${Math.round(item.discountPercentage)}%`
-                    : "New"
-                }
-              />
-            </div>
-          ))}
+          {loading
+            ? Array.from({ length: 4 }).map((_, idx) => (
+                <SkeletonCard key={idx} />
+              ))
+            : products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
         </Flex>
       </Container>
     </section>

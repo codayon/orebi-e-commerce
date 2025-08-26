@@ -3,16 +3,19 @@ import ImageWrapper from "./ImageWrapper";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import SvgWrapper from "./SvgWrapper";
 
-const ProductCard = ({ src, alt, productName, price, badgeName }) => {
+const ProductCard = ({ product }) => {
   return (
-    <div className={"relative group"}>
+    <div className={"relative group bg-white shadow p-2 min-w-[340px]"}>
+      {/* thumbnail section for product */}
       <div className="relative">
         <ImageWrapper
-          src={src}
-          alt={alt}
-          className={"cursor-pointer h-[350px] bg-gray-f"}
+          src={product.thumbnail}
+          alt={product.title}
+          className={"relative cursor-pointer aspect-square bg-gray-f"}
         />
-        <div className="absolute bottom-0 right-0 w-full bg-gray-b py-6 pr-8 opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible">
+
+        {/* add to cart section: hidden by default */}
+        <div className="absolute opacity-0 group-hover:opacity-100 invisible group-hover:visible bg-gray-b bottom-0 right-0 w-full py-6 pr-8 transition-all duration-300">
           <Flex
             className={
               "justify-end gap-4 transition duration-300 items-center cursor-pointer"
@@ -56,12 +59,20 @@ const ProductCard = ({ src, alt, productName, price, badgeName }) => {
           </Flex>
         </div>
       </div>
+
+      {/* information section for product */}
       <Flex className="justify-between items-center py-6 gap-4">
-        <h5 className="font-bold text-xl w-4/5 truncate cursor-pointer">{productName}</h5>
-        <p className="text-gray-a flex-shrink-0">{price}</p>
+        <h3 className="font-bold text-lg w-4/5 truncate cursor-pointer">
+          {product.title}
+        </h3>
+        <p className="text-gray-a">{product.price}</p>
       </Flex>
-      <div className="absolute top-5 left-5 bg-black-a text-white font-bold px-8 py-2.5">
-        {badgeName}
+
+      {/* badge section for the product */}
+      <div className="absolute top-4 left-4 bg-black-a text-white font-bold px-8 py-2.5">
+        {product.discountPercentage > 0
+          ? `${Math.round(product.discountPercentage)}%`
+          : "New"}
       </div>
     </div>
   );
