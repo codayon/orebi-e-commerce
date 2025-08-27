@@ -3,13 +3,17 @@ import Container from "../common/Container";
 import Flex from "../common/Flex";
 import MenuItem from "../common/MenuItem";
 import SvgWrapper from "../common/SvgWrapper";
+import { useState } from "react";
 
 const Header = () => {
+  const [dropdown, setDropdown] = useState(false);
+
   return (
     <header>
       <section className="py-8">
         <Container>
           <Flex className={"justify-between"}>
+            {/* page logo */}
             <SvgWrapper>
               <svg
                 width="66"
@@ -36,10 +40,15 @@ const Header = () => {
           </Flex>
         </Container>
       </section>
-      <section className={"py-6 bg-gray-b"}>
+      <section className={"py-6 bg-gray-b relative"}>
         <Container>
           <Flex className={"justify-between"}>
-            <Flex className="gap-3">
+            {/* dropdown section */}
+            <Flex
+              className="gap-3  cursor-pointer"
+              onClick={() => setDropdown(!dropdown)}
+            >
+              {/* category icon */}
               <SvgWrapper>
                 <svg
                   width="19"
@@ -52,22 +61,63 @@ const Header = () => {
                     d="M0.653061 2.93878H17.6327C17.9933 2.93878 18.2857 2.64641 18.2857 2.28571V0.653061C18.2857 0.292367 17.9933 0 17.6327 0H0.653061C0.292367 0 0 0.292367 0 0.653061V2.28571C0 2.64641 0.292367 2.93878 0.653061 2.93878Z"
                     fill="#262626"
                   />
+
                   <path
                     d="M0.5 9.46929H13.5C13.7762 9.46929 14 9.17693 14 8.81623V7.18358C14 6.82288 13.7762 6.53052 13.5 6.53052H0.5C0.223844 6.53052 0 6.82288 0 7.18358V8.81623C0 9.17693 0.223844 9.46929 0.5 9.46929Z"
                     fill="#262626"
                   />
                 </svg>
               </SvgWrapper>
-              <p className="text-black-a">Shop by Category</p>
+              <p className="text-black-a select-none">Shop by Category</p>
+              {/* dropdown category */}
+              <div
+                className={`absolute z-10 top-20 left-40 ${
+                  dropdown ? "opacity-100 visible" : "opacity-0 invisible"
+                }`}
+              >
+                <div className="py-4 px-8 bg-black-a border-b border-black-b">
+                  <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
+                    Accesories
+                  </h4>
+                </div>
+                <div className="py-4 px-8 bg-black-a border-b border-black-b">
+                  <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
+                    Furniture
+                  </h4>
+                </div>
+                <div className="py-4 px-8 bg-black-a border-b border-black-b">
+                  <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
+                    Electronics
+                  </h4>
+                </div>
+                <div className="py-4 px-8 bg-black-a border-b border-black-b">
+                  <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
+                    Clothes
+                  </h4>
+                </div>
+                <div className="py-4 px-8 bg-black-a border-b border-black-b">
+                  <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
+                    Bags
+                  </h4>
+                </div>
+                <div className="py-4 px-8 bg-black-a">
+                  <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
+                    Home Appliances
+                  </h4>
+                </div>
+              </div>
             </Flex>
+            {/* input field: search */}
             <Flex>
               <input
                 type="text"
                 placeholder="Search Products"
                 className="bg-white placeholder-gray-c py-4 px-5 outline-0 w-[32rem]"
               />
+
               <FaSearch className="-translate-x-8 cursor-pointer" />
             </Flex>
+            {/* user profile */}
             <Flex className="gap-10">
               <Flex className={"gap-2"}>
                 <FaUser className={"cursor-pointer"} />
