@@ -30,19 +30,23 @@ const Header = () => {
                 />
               </svg>
             </SvgWrapper>
-            <ul className="gap-10 flex items-center justify-between">
+            <ul className="flex items-center gap-10">
               <MenuItem to="/" label="Home" />
               <MenuItem to="shop" label="Shop" />
               <MenuItem to="about" label="About" />
               <MenuItem to="contacts" label="Contacts" />
               <MenuItem to="journal" label="Journal" />
             </ul>
+            <ul className="flex items-center gap-5">
+              <MenuItem label="EN" className="text-black hover:text-graphite" />
+              <MenuItem label="RU" />
+            </ul>
           </Flex>
         </Container>
       </section>
-      <section className={"py-6 bg-gray-b relative"}>
+      <section className={"py-6 bg-porcelain"}>
         <Container>
-          <Flex className={"justify-between"}>
+          <Flex className={"justify-between relative"}>
             {/* dropdown section */}
             <Flex
               className="gap-3  cursor-pointer"
@@ -68,39 +72,39 @@ const Header = () => {
                   />
                 </svg>
               </SvgWrapper>
-              <p className="text-black-a select-none">Shop by Category</p>
+              <p className="text-onyx select-none">Shop by Category</p>
               {/* dropdown category */}
               <div
-                className={`absolute z-10 top-20 left-40 ${
+                className={`absolute z-10 top-14 left-0 ${
                   dropdown ? "opacity-100 visible" : "opacity-0 invisible"
                 }`}
               >
-                <div className="py-4 px-8 bg-black-a border-b border-black-b">
+                <div className="py-4 px-8 bg-onyx border-b border-obsidian">
                   <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
                     Accesories
                   </h4>
                 </div>
-                <div className="py-4 px-8 bg-black-a border-b border-black-b">
+                <div className="py-4 px-8 bg-onyx border-b border-obsidian">
                   <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
                     Furniture
                   </h4>
                 </div>
-                <div className="py-4 px-8 bg-black-a border-b border-black-b">
+                <div className="py-4 px-8 bg-onyx border-b border-obsidian">
                   <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
                     Electronics
                   </h4>
                 </div>
-                <div className="py-4 px-8 bg-black-a border-b border-black-b">
+                <div className="py-4 px-8 bg-onyx border-b border-obsidian">
                   <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
                     Clothes
                   </h4>
                 </div>
-                <div className="py-4 px-8 bg-black-a border-b border-black-b">
+                <div className="py-4 px-8 bg-onyx border-b border-obsidian">
                   <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
                     Bags
                   </h4>
                 </div>
-                <div className="py-4 px-8 bg-black-a">
+                <div className="py-4 px-8 bg-onyx">
                   <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
                     Home Appliances
                   </h4>
@@ -112,7 +116,7 @@ const Header = () => {
               <input
                 type="text"
                 placeholder="Search Products"
-                className="bg-white placeholder-gray-c py-4 px-5 outline-0 w-[32rem]"
+                className="bg-white placeholder-silvermist py-4 px-5 outline-0 w-[32rem]"
               />
 
               <FaSearch className="-translate-x-8 cursor-pointer" />

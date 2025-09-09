@@ -7,7 +7,7 @@ const MenuItem = ({ to, label, className }) => {
       <Link
         to={to}
         className={twMerge(
-          "text-gray-a hover:text-black transition duration-300",
+          "text-graphite hover:text-black transition duration-300 select-none",
           className
         )}
       >

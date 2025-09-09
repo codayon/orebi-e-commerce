@@ -20,7 +20,7 @@ const SpecialOffers = () => {
   return (
     <section className="py-12">
       <Container>
-        <h4 className="text-black-a font-bold text-4xl ">Special Offers</h4>
+        <h4 className="text-onyx font-bold text-4xl ">Special Offers</h4>
         <Flex className={"justify-between py-12"}>
           {loading
             ? Array.from({ length: 4 }).map((_, idx) => (

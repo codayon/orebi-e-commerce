@@ -11,17 +11,17 @@ const ProductCard = ({ product }) => {
         <ImageWrapper
           src={product.thumbnail}
           alt={product.title}
-          className={"relative cursor-pointer aspect-square bg-gray-f"}
+          className={"relative cursor-pointer aspect-square bg-cloud"}
         />
 
         {/* add to cart section: hidden by default */}
-        <div className="absolute opacity-0 group-hover:opacity-100 invisible group-hover:visible bg-gray-b bottom-0 right-0 w-full py-6 pr-8 transition-all duration-300">
+        <div className="absolute opacity-0 group-hover:opacity-100 invisible group-hover:visible bg-porcelain bottom-0 right-0 w-full py-6 pr-8 transition-all duration-300">
           <Flex
             className={
               "justify-end gap-4 transition duration-300 items-center cursor-pointer"
             }
           >
-            <h5 className="text-gray-a hover:text-black">Add to Wish List</h5>
+            <h5 className="text-graphite hover:text-black">Add to Wish List</h5>
             <FaHeart className="text-[12px]" />
           </Flex>
           <Flex
@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
               "justify-end gap-4 transition duration-300 items-center cursor-pointer my-4"
             }
           >
-            <span className="text-gray-a hover:text-black">Compare</span>
+            <span className="text-graphite hover:text-black">Compare</span>
             <SvgWrapper>
               <svg
                 width="12"
@@ -52,7 +52,7 @@ const ProductCard = ({ product }) => {
               "justify-end gap-4 transition duration-300 items-center cursor-pointer"
             }
           >
-            <span className="text-gray-a hover:text-black transition duration-300">
+            <span className="text-graphite hover:text-black transition duration-300">
               Add to Cart
             </span>
             <FaShoppingCart className="text-[12px]" />
@@ -65,11 +65,11 @@ const ProductCard = ({ product }) => {
         <h3 className="font-bold text-lg w-4/5 truncate cursor-pointer">
           {product.title}
         </h3>
-        <p className="text-gray-a">{product.price}</p>
+        <p className="text-graphite">{product.price}</p>
       </Flex>
 
       {/* badge section for the product */}
-      <div className="absolute top-4 left-4 bg-black-a text-white font-bold px-8 py-2.5">
+      <div className="absolute top-4 left-4 bg-onyx text-white font-bold px-8 py-2.5">
         {product.discountPercentage > 0
           ? `${Math.round(product.discountPercentage)}%`
           : "New"}

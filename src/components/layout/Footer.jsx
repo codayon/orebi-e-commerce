@@ -7,11 +7,11 @@ import SvgWrapper from "../common/SvgWrapper";
 const Footer = () => {
   return (
     <footer>
-      <section className="pt-14 pb-14 bg-gray-b">
+      <section className="pt-14 pb-14 bg-porcelain">
         <Container>
           <div className={"flex gap-x-36"}>
             <div>
-              <h4 className="mb-4 font-bold text-black-a">MENU</h4>
+              <h4 className="mb-4 font-bold text-onyx">MENU</h4>
               <ul className="flex flex-col gap-2">
                 <MenuItem to="/" label="Home" />
                 <MenuItem to="shop" label="Shop" />
@@ -21,7 +21,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h4 className="mb-4   font-bold text-black-a">SHOP</h4>
+              <h4 className="mb-4   font-bold text-onyx">SHOP</h4>
               <ul className="flex flex-col gap-2">
                 <MenuItem label={"Sale"} />
                 <MenuItem label={"Kids"} />
@@ -31,7 +31,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h4 className="mb-4 font-bold text-black-a">HELP</h4>
+              <h4 className="mb-4 font-bold text-onyx">HELP</h4>
               <ul className="flex flex-col gap-y-2">
                 <MenuItem label={"Privacy Policy"} />
                 <MenuItem label={"Terms & Conditions"} />
@@ -41,10 +41,10 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h4 className="mb-4 font-bold text-black-a w-[12rem]">
+              <h4 className="mb-4 font-bold text-onyx w-[12rem]">
                 (052) 611-5711 company@domain.com
               </h4>
-              <p className="text-gray-a">
+              <p className="text-graphite">
                 575 Crescent Ave. Quakertown, PA 18951
               </p>
             </div>
@@ -69,7 +69,7 @@ const Footer = () => {
           </div>
         </Container>
       </section>
-      <section className="pb-14 bg-gray-b">
+      <section className="pb-14 bg-porcelain">
         <Container>
           <Flex className={"justify-between"}>
             <Flex className={"gap-6 text-lg"}>
@@ -77,7 +77,7 @@ const Footer = () => {
               <FaLinkedinIn className="cursor-pointer" />
               <FaInstagram className="cursor-pointer" />
             </Flex>
-            <p className="text-gray-a">
+            <p className="text-graphite">
               2020 Orebi Minimal eCommerce Figma Template by Adveits
             </p>
           </Flex>
