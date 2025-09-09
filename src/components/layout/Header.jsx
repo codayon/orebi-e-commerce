@@ -4,9 +4,13 @@ import Flex from "../common/Flex";
 import MenuItem from "../common/MenuItem";
 import SvgWrapper from "../common/SvgWrapper";
 import { useState } from "react";
+import { ImCross } from "react-icons/im";
+import Button from "../common/Button";
 
 const Header = () => {
-  const [dropdown, setDropdown] = useState(false);
+  const [categoryDropdown, setCategoryDropdown] = useState(false);
+  const [userDropdown, setUserDropdown] = useState(false);
+  const [cartDropdown, setCartDropdown] = useState(false);
 
   return (
     <header>
@@ -47,10 +51,10 @@ const Header = () => {
       <section className={"py-6 bg-porcelain"}>
         <Container>
           <Flex className={"justify-between relative"}>
-            {/* dropdown section */}
+            {/* category section */}
             <Flex
               className="gap-3  cursor-pointer"
-              onClick={() => setDropdown(!dropdown)}
+              onClick={() => setCategoryDropdown(!categoryDropdown)}
             >
               {/* category icon */}
               <SvgWrapper>
@@ -73,10 +77,12 @@ const Header = () => {
                 </svg>
               </SvgWrapper>
               <p className="text-onyx select-none">Shop by Category</p>
-              {/* dropdown category */}
+              {/* categoryDropdown */}
               <div
-                className={`absolute z-10 top-14 left-0 ${
-                  dropdown ? "opacity-100 visible" : "opacity-0 invisible"
+                className={`absolute z-10 top-14 left-0 select-none ${
+                  categoryDropdown
+                    ? "opacity-100 visible"
+                    : "opacity-0 invisible"
                 }`}
               >
                 <div className="py-4 px-8 bg-onyx border-b border-obsidian">
@@ -123,11 +129,64 @@ const Header = () => {
             </Flex>
             {/* user profile */}
             <Flex className="gap-10">
-              <Flex className={"gap-2"}>
-                <FaUser className={"cursor-pointer"} />
-                <FaCaretDown className={"cursor-pointer"} />
+              <Flex
+                className={"gap-2 cursor-pointer"}
+                onClick={() => setUserDropdown(!userDropdown)}
+              >
+                <FaUser />
+                <FaCaretDown />
               </Flex>
-              <FaShoppingCart className={"cursor-pointer"} />
+              <div
+                className={`absolute z-20 top-14 right-14 min-w-32 text-center ${
+                  userDropdown ? "opacity-100 visible" : "opacity-0 invisible"
+                }`}
+              >
+                <div className="bg-onyx py-4 px-10">
+                  <h4 className="text-gray-100 font-bold cursor-pointer">
+                    My Account
+                  </h4>
+                </div>
+                <div className="bg-white py-4 px-10">
+                  <h4 className="text-onyx cursor-pointer">Log Out</h4>
+                </div>
+              </div>
+              <FaShoppingCart
+                className={"cursor-pointer"}
+                onClick={() => setCartDropdown(!cartDropdown)}
+              />
+              <div
+                className={`absolute z-10 top-14 right-0 ${
+                  cartDropdown ? "opacity-100 visible" : "opacity-0 invisible"
+                }`}
+              >
+                <div className="bg-porcelain py-4 px-10">
+                  <Flex className={"gap-20"}>
+                    <Flex className={"gap-5"}>
+                      <div className="bg-ash w-20 h-20"></div>
+                      <div className="flex flex-col gap-3">
+                        <h4 className="text-onyx font-bold cursor-pointer">
+                          Black Smart Watch
+                        </h4>
+                        <h4 className="text-onyx font-bold">$44.00</h4>
+                      </div>
+                    </Flex>
+                    <ImCross className="cursor-pointer" />
+                  </Flex>
+                </div>
+                <Flex className={"bg-white flex-col gap-4 items-stretch p-5"}>
+                  <h4 className="text-onyx font-bold">
+                    <span className="text-graphite font-normal">Subtotal:</span>{" "}
+                    $44.00
+                  </h4>
+                  <Flex className="items-center justify-between">
+                    <Button
+                      className={"bg-transparent text-onyx"}
+                      label={"View Cart"}
+                    />
+                    <Button label={"Checkout"} />
+                  </Flex>
+                </Flex>
+              </div>
             </Flex>
           </Flex>
         </Container>
