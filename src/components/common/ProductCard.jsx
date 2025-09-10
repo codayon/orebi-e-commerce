@@ -2,8 +2,15 @@ import Flex from "./Flex";
 import ImageWrapper from "./ImageWrapper";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import SvgWrapper from "./SvgWrapper";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../features/cartSlice";
 
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    dispatch(addToCart(product)); // Send the product data as payload
+  };
+
   return (
     <div className={"relative group bg-white shadow p-2 min-w-[340px]"}>
       {/* thumbnail section for product */}
@@ -52,7 +59,10 @@ const ProductCard = ({ product }) => {
               "justify-end gap-4 transition duration-300 items-center cursor-pointer"
             }
           >
-            <span className="text-graphite hover:text-black transition duration-300">
+            <span
+              onClick={handleAddToCart}
+              className="text-graphite hover:text-black transition duration-300"
+            >
               Add to Cart
             </span>
             <FaShoppingCart className="text-[12px]" />

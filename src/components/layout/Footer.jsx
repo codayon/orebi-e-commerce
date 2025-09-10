@@ -9,7 +9,7 @@ const Footer = () => {
     <footer>
       <section className="pt-14 pb-14 bg-porcelain">
         <Container>
-          <div className={"flex gap-x-36"}>
+          <div className={"flex flex-wrap gap-x-36"}>
             <div>
               <h4 className="mb-4 font-bold text-onyx">MENU</h4>
               <ul className="flex flex-col gap-2">
