@@ -6,6 +6,7 @@ import SvgWrapper from "../common/SvgWrapper";
 import { useState } from "react";
 import { ImCross } from "react-icons/im";
 import Button from "../common/Button";
+import DropdownItem from "../common/DropdownItem";
 
 const Header = () => {
   const [categoryDropdown, setCategoryDropdown] = useState(false);
@@ -13,8 +14,9 @@ const Header = () => {
   const [cartDropdown, setCartDropdown] = useState(false);
 
   return (
-    <header>
-      <section className="py-8">
+    <header className="sticky top-0 z-50 bg-white">
+      {/* header first part */}
+      <section className="py-2">
         <Container>
           <Flex className={"justify-between"}>
             {/* page logo */}
@@ -34,26 +36,29 @@ const Header = () => {
                 />
               </svg>
             </SvgWrapper>
-            <ul className="flex items-center gap-10">
+            {/* page navigation menu */}
+            <ul className="flex items-center">
               <MenuItem to="/" label="Home" />
               <MenuItem to="shop" label="Shop" />
               <MenuItem to="about" label="About" />
               <MenuItem to="contacts" label="Contacts" />
               <MenuItem to="journal" label="Journal" />
             </ul>
-            <ul className="flex items-center gap-5">
-              <MenuItem label="EN" className="text-black hover:text-graphite" />
-              <MenuItem label="RU" />
+            {/* language change menu */}
+            <ul className="flex items-center">
+              <MenuItem label="EN" className="text-black font-bold w-8" />
+              <MenuItem label="RU" className={"w-8"} />
             </ul>
           </Flex>
         </Container>
       </section>
-      <section className={"py-6 bg-porcelain"}>
+      {/* header second part */}
+      <section className={"bg-porcelain py-4"}>
         <Container>
           <Flex className={"justify-between relative"}>
             {/* category section */}
             <Flex
-              className="gap-3  cursor-pointer"
+              className="gap-3 cursor-pointer"
               onClick={() => setCategoryDropdown(!categoryDropdown)}
             >
               {/* category icon */}
@@ -69,7 +74,6 @@ const Header = () => {
                     d="M0.653061 2.93878H17.6327C17.9933 2.93878 18.2857 2.64641 18.2857 2.28571V0.653061C18.2857 0.292367 17.9933 0 17.6327 0H0.653061C0.292367 0 0 0.292367 0 0.653061V2.28571C0 2.64641 0.292367 2.93878 0.653061 2.93878Z"
                     fill="#262626"
                   />
-
                   <path
                     d="M0.5 9.46929H13.5C13.7762 9.46929 14 9.17693 14 8.81623V7.18358C14 6.82288 13.7762 6.53052 13.5 6.53052H0.5C0.223844 6.53052 0 6.82288 0 7.18358V8.81623C0 9.17693 0.223844 9.46929 0.5 9.46929Z"
                     fill="#262626"
@@ -77,58 +81,50 @@ const Header = () => {
                 </svg>
               </SvgWrapper>
               <p className="text-onyx select-none">Shop by Category</p>
-              {/* categoryDropdown */}
-              <div
-                className={`absolute z-10 top-14 left-0 select-none ${
-                  categoryDropdown
-                    ? "opacity-100 visible"
-                    : "opacity-0 invisible"
-                }`}
-              >
-                <div className="py-4 px-8 bg-onyx border-b border-obsidian">
-                  <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
-                    Accesories
-                  </h4>
-                </div>
-                <div className="py-4 px-8 bg-onyx border-b border-obsidian">
-                  <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
-                    Furniture
-                  </h4>
-                </div>
-                <div className="py-4 px-8 bg-onyx border-b border-obsidian">
-                  <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
-                    Electronics
-                  </h4>
-                </div>
-                <div className="py-4 px-8 bg-onyx border-b border-obsidian">
-                  <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
-                    Clothes
-                  </h4>
-                </div>
-                <div className="py-4 px-8 bg-onyx border-b border-obsidian">
-                  <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
-                    Bags
-                  </h4>
-                </div>
-                <div className="py-4 px-8 bg-onyx">
-                  <h4 className="text-gray-100 cursor-pointer  hover:translate-x-2 transition-all duration-200 ease-in-out">
-                    Home Appliances
-                  </h4>
-                </div>
-              </div>
             </Flex>
-            {/* input field: search */}
+            {/* category dropdown */}
+            <div
+              className={`absolute z-10 top-14 left-0 min-w-60 select-none ${
+                categoryDropdown ? "opacity-100 visible" : "opacity-0 invisible"
+              }`}
+            >
+              <DropdownItem
+                label={"Accesories"}
+                labelClass={"hover:translate-x-2.5"}
+              />
+              <DropdownItem
+                label={"Furniture"}
+                labelClass={"hover:translate-x-2.5"}
+              />
+              <DropdownItem
+                label={"Electronics"}
+                labelClass={"hover:translate-x-2.5"}
+              />
+              <DropdownItem
+                label={"Clothes"}
+                labelClass={"hover:translate-x-2.5"}
+              />
+              <DropdownItem
+                label={"Bags"}
+                labelClass={"hover:translate-x-2.5"}
+              />
+              <DropdownItem
+                label={"Home appliances"}
+                labelClass={"hover:translate-x-2.5"}
+              />
+            </div>
+            {/* search input */}
             <Flex>
               <input
                 type="text"
                 placeholder="Search Products"
-                className="bg-white placeholder-silvermist py-4 px-5 outline-0 w-[32rem]"
+                className="bg-white placeholder-silvermist py-2 pl-4 pr-12 outline-0 w-xl"
               />
-
               <FaSearch className="-translate-x-8 cursor-pointer" />
             </Flex>
-            {/* user profile */}
+            {/* user and cart */}
             <Flex className="gap-10">
+              {/* user */}
               <Flex
                 className={"gap-2 cursor-pointer"}
                 onClick={() => setUserDropdown(!userDropdown)}
@@ -136,56 +132,84 @@ const Header = () => {
                 <FaUser />
                 <FaCaretDown />
               </Flex>
+              {/* user dropdown*/}
               <div
-                className={`absolute z-20 top-14 right-14 min-w-32 text-center ${
+                className={`absolute z-20 top-14 right-14 min-w-40 text-center ${
                   userDropdown ? "opacity-100 visible" : "opacity-0 invisible"
                 }`}
               >
-                <div className="bg-onyx py-4 px-10">
-                  <h4 className="text-gray-100 font-bold cursor-pointer">
-                    My Account
-                  </h4>
-                </div>
-                <div className="bg-white py-4 px-10">
-                  <h4 className="text-onyx cursor-pointer">Log Out</h4>
-                </div>
+                <DropdownItem label={"My Account"} />
+                <DropdownItem label={"Sign Out"} />
               </div>
+              {/* cart */}
               <FaShoppingCart
                 className={"cursor-pointer"}
                 onClick={() => setCartDropdown(!cartDropdown)}
               />
+              {/* cart dropdown */}
               <div
                 className={`absolute z-10 top-14 right-0 ${
                   cartDropdown ? "opacity-100 visible" : "opacity-0 invisible"
                 }`}
               >
-                <div className="bg-porcelain py-4 px-10">
-                  <Flex className={"gap-20"}>
-                    <Flex className={"gap-5"}>
-                      <div className="bg-ash w-20 h-20"></div>
-                      <div className="flex flex-col gap-3">
-                        <h4 className="text-onyx font-bold cursor-pointer">
-                          Black Smart Watch
-                        </h4>
-                        <h4 className="text-onyx font-bold">$44.00</h4>
-                      </div>
+                <div className="bg-onyx px-5">
+                  <Flex className={"border-ash gap-6 py-5 border-b-2"}>
+                    <div className="bg-ash w-20 h-20"></div>
+                    <div className="text-white font-bold flex flex-col gap-3">
+                      <h4 className="cursor-pointer w-52 truncate">
+                        Black Smart Watch
+                      </h4>
+                      <h4>$49.00</h4>
+                    </div>
+                    <Flex className={"text-white border px-4 py-2 gap-4"}>
+                      <button>+</button>
+                      <span>0</span>
+                      <button>-</button>
                     </Flex>
-                    <ImCross className="cursor-pointer" />
+                    <ImCross className="text-white cursor-pointer" />
                   </Flex>
+                  <Flex className={"border-ash gap-6 py-5 border-b-2"}>
+                    <div className="bg-ash w-20 h-20"></div>
+                    <div className="text-white font-bold flex flex-col gap-3">
+                      <h4 className="cursor-pointer w-52 truncate">
+                        Adobe Premiere Pro
+                      </h4>
+                      <h4>$25.00</h4>
+                    </div>
+                    <Flex className={"text-white border px-4 py-2 gap-4"}>
+                      <button>+</button>
+                      <span>0</span>
+                      <button>-</button>
+                    </Flex>
+                    <ImCross className="text-white cursor-pointer" />
+                  </Flex>
+                  <div className={"py-5"}>
+                    <div className={"flex flex-col gap-2 pb-5"}>
+                      <Flex className="justify-between">
+                        <h4 className="text-mist">Subtotal</h4>
+                        <h4 className="text-white font-bold">$74.00</h4>
+                      </Flex>
+                      <Flex className="justify-between">
+                        <h4 className="text-mist">Discount</h4>
+                        <h4 className="text-white font-bold">$8.00</h4>
+                      </Flex>
+                      <Flex className="justify-between">
+                        <h4 className="text-mist">Total</h4>
+                        <h4 className="text-white font-bold">$76.00</h4>
+                      </Flex>
+                    </div>
+                    <Flex className="items-center justify-between">
+                      <Button
+                        className={"text-white border-white px-18 py-4"}
+                        label={"View Cart"}
+                      />
+                      <Button
+                        className={"bg-white text-onyx px-18"}
+                        label={"Checkout"}
+                      />
+                    </Flex>
+                  </div>
                 </div>
-                <Flex className={"bg-white flex-col gap-4 items-stretch p-5"}>
-                  <h4 className="text-onyx font-bold">
-                    <span className="text-graphite font-normal">Subtotal:</span>{" "}
-                    $44.00
-                  </h4>
-                  <Flex className="items-center justify-between">
-                    <Button
-                      className={"bg-transparent text-onyx"}
-                      label={"View Cart"}
-                    />
-                    <Button label={"Checkout"} />
-                  </Flex>
-                </Flex>
               </div>
             </Flex>
           </Flex>

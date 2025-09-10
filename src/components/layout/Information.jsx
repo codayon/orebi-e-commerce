@@ -10,7 +10,7 @@ const Information = () => {
         <Flex className={"justify-between"}>
           <Flex className={"gap-3"}>
             <PiNumberTwoBold />
-            <p className="text-stone">Free shipping</p>
+            <p className="text-stone">Two years warranty</p>
           </Flex>
           <Flex className={"gap-3"}>
             <FaTruck />
