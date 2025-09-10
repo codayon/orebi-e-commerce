@@ -7,11 +7,15 @@ import { useState } from "react";
 import { ImCross } from "react-icons/im";
 import Button from "../common/Button";
 import DropdownItem from "../common/DropdownItem";
+import { useSelector, useDispatch } from "react-redux";
+import { decrement, increment } from "../../features/counterSlice";
 
 const Header = () => {
   const [categoryDropdown, setCategoryDropdown] = useState(false);
   const [userDropdown, setUserDropdown] = useState(false);
   const [cartDropdown, setCartDropdown] = useState(false);
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
 
   return (
     <header className="sticky top-0 z-50 bg-white">
@@ -153,7 +157,8 @@ const Header = () => {
                 }`}
               >
                 <div className="bg-onyx px-5">
-                  <Flex className={"border-ash gap-6 py-5 border-b-2"}>
+                  {/* <Flex className={"border-ash gap-6 py-5 border-b-2"}>
+                    
                     <div className="bg-ash w-20 h-20"></div>
                     <div className="text-white font-bold flex flex-col gap-3">
                       <h4 className="cursor-pointer w-52 truncate">
@@ -167,7 +172,7 @@ const Header = () => {
                       <button>-</button>
                     </Flex>
                     <ImCross className="text-white cursor-pointer" />
-                  </Flex>
+                  </Flex> */}
                   <Flex className={"border-ash gap-6 py-5 border-b-2"}>
                     <div className="bg-ash w-20 h-20"></div>
                     <div className="text-white font-bold flex flex-col gap-3">
@@ -176,10 +181,20 @@ const Header = () => {
                       </h4>
                       <h4>$25.00</h4>
                     </div>
-                    <Flex className={"text-white border px-4 py-2 gap-4"}>
-                      <button>+</button>
-                      <span>0</span>
-                      <button>-</button>
+                    <Flex className="text-white text-center border px-4 py-2 gap-4">
+                      <button
+                        className="cursor-pointer"
+                        onClick={() => count >= 1 && dispatch(decrement())}
+                      >
+                        -
+                      </button>
+                      <span className="w-6 select-none">{count}</span>
+                      <button
+                        className="cursor-pointer"
+                        onClick={() => dispatch(increment())}
+                      >
+                        +
+                      </button>
                     </Flex>
                     <ImCross className="text-white cursor-pointer" />
                   </Flex>
