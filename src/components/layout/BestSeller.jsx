@@ -1,7 +1,7 @@
+import { useState, useEffect } from "react";
 import Container from "../common/Container";
 import Flex from "../common/Flex";
 import ProductCard from "../common/ProductCard";
-import { useState, useEffect } from "react";
 import SkeletonCard from "../common/SkeletonCard";
 
 const BestSeller = () => {
