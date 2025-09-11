@@ -148,7 +148,7 @@ const Header = () => {
               <input
                 type="text"
                 placeholder="Search Products"
-                className="bg-white placeholder-silvermist py-2 pl-4 pr-12 outline-0 w-sm"
+                className="bg-white placeholder-silvermist py-2 pl-4 pr-12 outline-0 w-lg"
               />
               <FaSearch className="-translate-x-8 cursor-pointer" />
             </Flex>
