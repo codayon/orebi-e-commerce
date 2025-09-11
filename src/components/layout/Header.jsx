@@ -202,10 +202,10 @@ const Header = () => {
                             <ImageWrapper
                               src={item.thumbnail}
                               alt={item.title}
-                              className={"aspect-square w-20 h-20 bg-ash"}
+                              className={"aspect-square w-20 h-20 bg-cloud"}
                             />
                           ) : (
-                            <div className="bg-ash w-20 h-20"></div>
+                            <div className="bg-cloud w-20 h-20"></div>
                           )}
                           <div className="text-white font-bold flex flex-col gap-3">
                             <h4 className="cursor-pointer w-52 truncate">
