@@ -185,7 +185,7 @@ const Header = () => {
                   cartDropdown ? "opacity-100 visible" : "opacity-0 invisible"
                 }`}
               >
-                <div className="bg-onyx px-5 py-5">
+                <div className="bg-onyx px-5">
                   {cartItems.length === 0 ? (
                     <div className="text-white text-center py-10">
                       <p>No items in cart</p>
