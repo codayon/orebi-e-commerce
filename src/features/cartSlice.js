@@ -13,12 +13,16 @@ const calculateTotals = (items) => {
   );
   const totalDiscount = items.reduce(
     (sum, item) =>
-      sum + (item.price * item.quantity * (item.discountPercentage || 0)) / 100,
+      sum +
+      (item.price *
+        item.quantity *
+        (Math.round(item.discountPercentage) || 0)) /
+        100,
     0
   );
   return {
     subtotal: Number(subtotal.toFixed(2)),
-    total: Number((subtotal - totalDiscount).toFixed(2)),
+    total: subtotal - totalDiscount,
   };
 };
 
