@@ -1,42 +1,34 @@
 import Flex from "./Flex";
 import ImageWrapper from "./ImageWrapper";
-import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import SvgWrapper from "./SvgWrapper";
+import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cartSlice";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
-  const handleAddToCart = () => {
-    dispatch(addToCart(product)); // Send the product data as payload
-  };
 
   return (
-    <div className={"relative group bg-white shadow p-2 min-w-[340px]"}>
-      {/* thumbnail section for product */}
+    <div className={"bg-white relative group shadow p-2 min-w-[340px]"}>
       <div className="relative">
         <ImageWrapper
           src={product.thumbnail}
           alt={product.title}
-          className={"relative cursor-pointer aspect-square bg-cloud"}
+          className="cursor-pointer aspect-square bg-cloud"
         />
 
-        {/* add to cart section: hidden by default */}
-        <div className="absolute opacity-0 group-hover:opacity-100 invisible group-hover:visible bg-porcelain bottom-0 right-0 w-full py-6 pr-8 transition-all duration-300">
-          <Flex
-            className={
-              "justify-end gap-4 transition duration-300 items-center cursor-pointer"
-            }
-          >
-            <h5 className="text-graphite hover:text-black">Add to Wish List</h5>
+        <div className="bg-porcelain absolute group-hover:opacity-100 group-hover:visible bottom-0 right-0 opacity-0 invisible w-full py-6 pr-8 transition-all duration-300">
+          <Flex className="justify-end gap-4 transition duration-300 items-center cursor-pointer">
+            <h5 className="text-graphite hover:text-black select-none">
+              Add to Wish List
+            </h5>
             <FaHeart className="text-[12px]" />
           </Flex>
-          <Flex
-            className={
-              "justify-end gap-4 transition duration-300 items-center cursor-pointer my-4"
-            }
-          >
-            <span className="text-graphite hover:text-black">Compare</span>
+
+          <Flex className="my-4 justify-end gap-4 transition duration-300 cursor-pointer">
+            <span className="text-graphite hover:text-black select-none">
+              Compare
+            </span>
             <SvgWrapper>
               <svg
                 width="12"
@@ -54,14 +46,11 @@ const ProductCard = ({ product }) => {
               </svg>
             </SvgWrapper>
           </Flex>
-          <Flex
-            className={
-              "justify-end gap-4 transition duration-300 items-center cursor-pointer"
-            }
-          >
+
+          <Flex className="justify-end gap-4 transition duration-300 cursor-pointer">
             <span
-              onClick={handleAddToCart}
-              className="text-graphite hover:text-black transition duration-300"
+              onClick={() => dispatch(addToCart(product))}
+              className="text-graphite hover:text-black transition duration-300 select-none"
             >
               Add to Cart
             </span>
@@ -70,16 +59,14 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
 
-      {/* information section for product */}
-      <Flex className="justify-between items-center py-6 gap-4">
-        <h3 className="font-bold text-lg w-4/5 truncate cursor-pointer">
+      <Flex className="py-6 justify-between gap-4">
+        <h3 className="w-4/5 font-bold text-lg truncate cursor-pointer">
           {product.title}
         </h3>
-        <p className="text-graphite">{product.price}</p>
+        <p className="text-graphite">${product.price}</p>
       </Flex>
 
-      {/* badge section for the product */}
-      <div className="absolute top-4 left-4 bg-onyx text-white font-bold px-8 py-2.5">
+      <div className="bg-onyx text-white absolute px-8 py-2.5 top-4 left-4 font-bold select-none">
         {product.discountPercentage > 0
           ? `${Math.round(product.discountPercentage)}%`
           : "New"}

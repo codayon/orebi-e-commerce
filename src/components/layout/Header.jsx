@@ -28,12 +28,10 @@ const Header = () => {
   const total = useSelector(selectCartTotal);
 
   return (
-    <header className="sticky top-0 z-50 bg-white">
-      {/* header first part */}
+    <header className="bg-white sticky top-0 left-0 z-50">
       <section className="py-2">
         <Container>
-          <Flex className={"flex-wrap justify-between"}>
-            {/* page logo */}
+          <Flex className="flex-wrap justify-between">
             <SvgWrapper>
               <svg
                 width="66"
@@ -51,45 +49,37 @@ const Header = () => {
               </svg>
             </SvgWrapper>
 
-            {/* page navigation menu */}
             <ul className="flex flex-wrap items-center">
-              <MenuItem className={"inline-block"} to="/" label="Home" />
-              <MenuItem className={"inline-block"} to="shop" label="Shop" />
-              <MenuItem className={"inline-block"} to="about" label="About" />
+              <MenuItem className="inline-block" to="/" label="Home" />
+              <MenuItem className="inline-block" to="shop" label="Shop" />
+              <MenuItem className="inline-block" to="about" label="About" />
               <MenuItem
-                className={"inline-block"}
+                className="inline-block"
                 to="contacts"
                 label="Contacts"
               />
-              <MenuItem
-                className={"inline-block"}
-                to="journal"
-                label="Journal"
-              />
+
+              <MenuItem className="inline-block" to="journal" label="Journal" />
             </ul>
 
-            {/* language change menu */}
             <ul className="flex items-center">
               <MenuItem
                 label="EN"
                 className="text-black inline-block font-bold w-8"
               />
-              <MenuItem label="RU" className={"w-8 inline-block"} />
+              <MenuItem label="RU" className="w-8 inline-block" />
             </ul>
           </Flex>
         </Container>
       </section>
 
-      {/* header second part */}
-      <section className={"bg-porcelain py-4"}>
+      <section className="bg-porcelain py-4">
         <Container>
-          <Flex className={"flex-wrap justify-between relative"}>
-            {/* category section */}
+          <Flex className="flex-wrap justify-between relative">
             <Flex
               className="gap-3 cursor-pointer"
               onClick={() => setCategoryDropdown(!categoryDropdown)}
             >
-              {/* category icon */}
               <SvgWrapper>
                 <svg
                   width="19"
@@ -111,39 +101,34 @@ const Header = () => {
               <p className="text-onyx select-none">Shop by Category</p>
             </Flex>
 
-            {/* category dropdown */}
             <div
               className={`absolute z-10 top-14 left-0 min-w-60 select-none ${
                 categoryDropdown ? "opacity-100 visible" : "opacity-0 invisible"
               }`}
             >
               <DropdownItem
-                label={"Accesories"}
-                labelClass={"hover:translate-x-2.5"}
+                label="Accesories"
+                labelClass="hover:translate-x-2.5"
               />
               <DropdownItem
-                label={"Furniture"}
-                labelClass={"hover:translate-x-2.5"}
+                label="Furniture"
+                labelClass="hover:translate-x-2.5"
               />
               <DropdownItem
-                label={"Electronics"}
-                labelClass={"hover:translate-x-2.5"}
+                label="Electronics"
+                labelClass="hover:translate-x-2.5"
               />
               <DropdownItem
-                label={"Clothes"}
-                labelClass={"hover:translate-x-2.5"}
+                label="Clothes"
+                labelClass="hover:translate-x-2.5"
               />
+              <DropdownItem label="Bags" labelClass="hover:translate-x-2.5" />
               <DropdownItem
-                label={"Bags"}
-                labelClass={"hover:translate-x-2.5"}
-              />
-              <DropdownItem
-                label={"Home appliances"}
-                labelClass={"hover:translate-x-2.5"}
+                label="Home appliances"
+                labelClass="hover:translate-x-2.5"
               />
             </div>
 
-            {/* search input */}
             <Flex>
               <input
                 type="text"
@@ -153,67 +138,63 @@ const Header = () => {
               <FaSearch className="-translate-x-8 cursor-pointer" />
             </Flex>
 
-            {/* user and cart */}
             <Flex className="gap-10">
-              {/* user */}
               <Flex
-                className={"gap-2 cursor-pointer"}
+                className="gap-2 cursor-pointer"
                 onClick={() => setUserDropdown(!userDropdown)}
               >
                 <FaUser />
                 <FaCaretDown />
               </Flex>
 
-              {/* user dropdown */}
               <div
                 className={`absolute z-20 top-14 right-14 min-w-40 text-center ${
                   userDropdown ? "opacity-100 visible" : "opacity-0 invisible"
                 }`}
               >
-                <DropdownItem label={"My Account"} />
-                <DropdownItem label={"Sign Out"} />
+                <DropdownItem label="My Account" />
+                <DropdownItem label="Sign Out" />
               </div>
 
-              {/* cart */}
               <FaShoppingCart
-                className={"cursor-pointer"}
+                className="cursor-pointer"
                 onClick={() => setCartDropdown(!cartDropdown)}
               />
-              {/* cart dropdown */}
               <div
-                className={`absolute z-10 top-14 right-0 min-w-[400px] max-h-[80vh] overflow-y-auto ${
+                className={`absolute z-10 min-w-xl max-h-[80vh] top-14 right-0 overflow-y-auto ${
                   cartDropdown ? "opacity-100 visible" : "opacity-0 invisible"
                 }`}
               >
                 <div className="bg-onyx px-5">
                   {cartItems.length === 0 ? (
-                    <div className="text-white text-center py-10">
+                    <div className="text-white py-10 text-center">
                       <p>No items in cart</p>
                     </div>
                   ) : (
                     <>
-                      {/* cart product list */}
                       {cartItems.map((item) => (
                         <Flex
-                          className={"border-ash gap-6 py-5 border-b-2"}
+                          className="border-ash justify-between gap-6 py-5 border-b-2"
                           key={item.id}
                         >
                           {item.thumbnail ? (
                             <ImageWrapper
                               src={item.thumbnail}
                               alt={item.title}
-                              className={"aspect-square w-20 h-20 bg-cloud"}
+                              className="bg-cloud w-20 h-20 aspect-square"
                             />
                           ) : (
                             <div className="bg-cloud w-20 h-20"></div>
                           )}
-                          <div className="text-white font-bold flex flex-col gap-3">
-                            <h4 className="cursor-pointer w-52 truncate">
+
+                          <div className="text-white flex flex-col gap-3 font-bold">
+                            <h4 className="w-52 truncate cursor-pointer">
                               {item.title}
                             </h4>
                             <h4>${item.price.toFixed(2)}</h4>
                           </div>
-                          <Flex className="text-white text-center border px-4 py-2 gap-4">
+
+                          <Flex className="text-white px-4 py-2 gap-4 border text-center">
                             <button
                               className="cursor-pointer"
                               onClick={() =>
@@ -222,9 +203,11 @@ const Header = () => {
                             >
                               -
                             </button>
+
                             <span className="w-6 select-none">
                               {item.quantity}
                             </span>
+
                             <button
                               className="cursor-pointer"
                               onClick={() =>
@@ -240,21 +223,23 @@ const Header = () => {
                           />
                         </Flex>
                       ))}
-                      {/* total price and proceed buttons */}
-                      <div className={"py-5"}>
-                        <div className={"flex flex-col gap-2 pb-5"}>
+
+                      <div className="py-5">
+                        <div className="flex flex-col gap-2 pb-5">
                           <Flex className="justify-between">
                             <h4 className="text-mist">Subtotal</h4>
                             <h4 className="text-white font-bold">
                               ${subtotal.toFixed(2)}
                             </h4>
                           </Flex>
+
                           <Flex className="justify-between">
                             <h4 className="text-mist">Discount</h4>
                             <h4 className="text-white font-bold">
                               ${(subtotal - total).toFixed(2)}
                             </h4>
                           </Flex>
+
                           <Flex className="justify-between">
                             <h4 className="text-mist">Total</h4>
                             <h4 className="text-white font-bold">
@@ -262,14 +247,15 @@ const Header = () => {
                             </h4>
                           </Flex>
                         </div>
-                        <Flex className="items-center justify-between">
+
+                        <Flex className="justify-between">
                           <Button
-                            className={"text-white border-white px-18 py-4"}
-                            label={"View Cart"}
+                            className="text-white border-white px-18 py-4"
+                            label="View Cart"
                           />
                           <Button
-                            className={"bg-white text-onyx px-18"}
-                            label={"Checkout"}
+                            className="bg-white text-onyx px-18 border-transparent"
+                            label="Checkout"
                           />
                         </Flex>
                       </div>
