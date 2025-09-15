@@ -5,6 +5,7 @@ import {
   FaUser,
   FaBars,
   FaSearch,
+  FaCaretUp,
   FaCaretDown,
   FaShoppingCart,
 } from "react-icons/fa";
@@ -24,20 +25,39 @@ import Button from "../common/Button";
 import DropdownItem from "../common/DropdownItem";
 import ImageWrapper from "../common/ImageWrapper";
 
-const menuData = [
-  { id: 1, to: "/", label: "Home" },
-  { id: 2, to: "shop", label: "Shop" },
-  { id: 3, to: "about", label: "About" },
-  { id: 4, to: "contacts", label: "Contacts" },
-  { id: 5, to: "journal", label: "Journal" },
-];
+const data = {
+  menus: [
+    { id: 1, to: "/", label: "Home" },
+    { id: 2, to: "shop", label: "Shop" },
+    { id: 3, to: "about", label: "About" },
+    { id: 4, to: "contacts", label: "Contacts" },
+    { id: 5, to: "journal", label: "Journal" },
+  ],
+  categories: [
+    { id: 1, to: "shop", label: "Accessories" },
+    { id: 2, to: "shop", label: "Furniture" },
+    { id: 3, to: "shop", label: "Electronics" },
+    { id: 4, to: "shop", label: "Clothes" },
+    { id: 5, to: "shop", label: "Bags" },
+    { id: 6, to: "shop", label: "Home appliances" },
+  ],
+  accounts: [
+    { id: 1, to: "/", label: "My Account" },
+    { id: 2, to: "/", label: "Sign In" },
+    { id: 3, to: "/", label: "Sign Up" },
+  ],
+};
 
 const Header = () => {
   const [categoryDropdown, setCategoryDropdown] = useState(false);
   const [userDropdown, setUserDropdown] = useState(false);
   const [cartDropdown, setCartDropdown] = useState(false);
-  const [smallScreenDropdown, setSmallScreenDropdown] = useState(true);
-  const [smallScreenAccordion, setSmallScreenAccordion] = useState(true);
+  const [smallScreenDropdown, setSmallScreenDropdown] = useState(false);
+  const [accordion, setAccordion] = useState({
+    menus: true,
+    categories: true,
+    accounts: false,
+  });
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const subtotal = useSelector(selectCartSubtotal);
@@ -65,12 +85,14 @@ const Header = () => {
               </svg>
             </SvgWrapper>
 
-            <FaBars
+            <div
               className="md:hidden"
               onClick={() => {
                 setSmallScreenDropdown(!smallScreenDropdown);
               }}
-            />
+            >
+              {smallScreenDropdown ? <ImCross /> : <FaBars />}
+            </div>
 
             {smallScreenDropdown && (
               <div className="absolute md:hidden w-full top-12 left-0 bg-porcelain h-[95vh]">
@@ -84,42 +106,99 @@ const Header = () => {
                     <FaSearch className="text-black absolute right-2" />
                   </Flex>
 
-                  <div>
-                    <Flex
-                      className="justify-between mb-2 cursor-pointer"
-                      onClick={() =>
-                        setSmallScreenAccordion(!smallScreenAccordion)
-                      }
-                    >
-                      <h4 className="font-bold">Pages</h4>
-                      <span>
-                        <FaCaretDown />
-                      </span>
-                    </Flex>
-                    {smallScreenAccordion && (
-                      <div>
-                        <ul className="flex flex-col gap-1">
-                          {menuData.map((item) => (
-                            <MenuItem
-                              key={item.id}
-                              to={item.to}
-                              label={item.label}
-                            />
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                  <div className="flex flex-col gap-2">
+                    <div>
+                      <Flex
+                        className="justify-between mb-2 cursor-pointer"
+                        onClick={() =>
+                          setAccordion((prev) => ({
+                            ...prev,
+                            menus: !prev.menus,
+                          }))
+                        }
+                      >
+                        <h4 className="font-bold text-lg">Pages</h4>
+                        {accordion.menus ? <FaCaretDown /> : <FaCaretUp />}
+                      </Flex>
+                      {accordion.menus && (
+                        <div>
+                          <ul className="flex flex-col gap-1">
+                            {data.menus.map((menu) => (
+                              <MenuItem
+                                key={menu.id}
+                                to={menu.to}
+                                label={menu.label}
+                              />
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                    <div>
+                      <Flex
+                        className="justify-between mb-2 cursor-pointer"
+                        onClick={() =>
+                          setAccordion((prev) => ({
+                            ...prev,
+                            categories: !prev.categories,
+                          }))
+                        }
+                      >
+                        <h4 className="font-bold text-lg">Categories</h4>
+                        {accordion.categories ? <FaCaretDown /> : <FaCaretUp />}
+                      </Flex>
+                      {accordion.categories && (
+                        <div>
+                          <ul className="flex flex-col gap-1">
+                            {data.categories.map((category) => (
+                              <MenuItem
+                                key={category.id}
+                                to={category.to}
+                                label={category.label}
+                              />
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                    <div>
+                      <Flex
+                        className="justify-between mb-2 cursor-pointer"
+                        onClick={() =>
+                          setAccordion((prev) => ({
+                            ...prev,
+                            accounts: !prev.accounts,
+                          }))
+                        }
+                      >
+                        <h4 className="font-bold text-lg">Accounts</h4>
+                        {accordion.accounts ? <FaCaretDown /> : <FaCaretUp />}
+                      </Flex>
+                      {accordion.accounts && (
+                        <div>
+                          <ul className="flex flex-col gap-1">
+                            {data.accounts.map((account) => (
+                              <MenuItem
+                                key={account.id}
+                                to={account.to}
+                                label={account.label}
+                              />
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </Container>
               </div>
             )}
 
             <ul className="hidden md:flex md:items-center md:justify-between md:w-sm">
-              {menuData.map((item) => (
+              {data.menus.map((menu) => (
                 <MenuItem
-                  key={item.id}
-                  to={item.to}
-                  label={item.label}
+                  key={menu.id}
+                  to={menu.to}
+                  label={menu.label}
                 />
               ))}
             </ul>
@@ -171,30 +250,13 @@ const Header = () => {
                 categoryDropdown ? "opacity-100 visible" : "opacity-0 invisible"
               }`}
             >
-              <DropdownItem
-                label="Accesories"
-                labelClass="hover:translate-x-2.5"
-              />
-              <DropdownItem
-                label="Furniture"
-                labelClass="hover:translate-x-2.5"
-              />
-              <DropdownItem
-                label="Electronics"
-                labelClass="hover:translate-x-2.5"
-              />
-              <DropdownItem
-                label="Clothes"
-                labelClass="hover:translate-x-2.5"
-              />
-              <DropdownItem
-                label="Bags"
-                labelClass="hover:translate-x-2.5"
-              />
-              <DropdownItem
-                label="Home appliances"
-                labelClass="hover:translate-x-2.5"
-              />
+              {data.categories.map((category) => (
+                <DropdownItem
+                  key={category.id}
+                  label={category.label}
+                  labelClass="hover:translate-x-2.5"
+                />
+              ))}
             </div>
 
             <Flex>
