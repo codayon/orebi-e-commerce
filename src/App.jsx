@@ -9,12 +9,30 @@ import Journal from "./pages/Journal";
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<RootLayout />}>
-        <Route index element={<Home />} />
-        <Route path="shop" element={<Shop />} />
-        <Route path="about" element={<About />} />
-        <Route path="contacts" element={<Contacts />} />
-        <Route path="journal" element={<Journal />} />
+      <Route
+        path="/"
+        element={<RootLayout />}
+      >
+        <Route
+          index
+          element={<Home />}
+        />
+        <Route
+          path="shop"
+          element={<Shop />}
+        />
+        <Route
+          path="about"
+          element={<About />}
+        />
+        <Route
+          path="contacts"
+          element={<Contacts />}
+        />
+        <Route
+          path="journal"
+          element={<Journal />}
+        />
       </Route>
     </Routes>
   );

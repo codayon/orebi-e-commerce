@@ -27,7 +27,10 @@ const BestSeller = () => {
                 <SkeletonCard key={idx} />
               ))
             : products.map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                />
               ))}
         </Flex>
       </Container>

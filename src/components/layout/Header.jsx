@@ -24,6 +24,14 @@ import Button from "../common/Button";
 import DropdownItem from "../common/DropdownItem";
 import ImageWrapper from "../common/ImageWrapper";
 
+const menuData = [
+  { id: 1, to: "/", label: "Home" },
+  { id: 2, to: "shop", label: "Shop" },
+  { id: 3, to: "about", label: "About" },
+  { id: 4, to: "contacts", label: "Contacts" },
+  { id: 5, to: "journal", label: "Journal" },
+];
+
 const Header = () => {
   const [categoryDropdown, setCategoryDropdown] = useState(false);
   const [userDropdown, setUserDropdown] = useState(false);
@@ -89,28 +97,17 @@ const Header = () => {
                       </span>
                     </Flex>
                     {smallScreenAccordion && (
-                      <ul className="flex flex-col gap-1">
-                        <MenuItem
-                          to="/"
-                          label="Home"
-                        />
-                        <MenuItem
-                          to="shop"
-                          label="Shop"
-                        />
-                        <MenuItem
-                          to="about"
-                          label="About"
-                        />
-                        <MenuItem
-                          to="contacts"
-                          label="Contacts"
-                        />
-                        <MenuItem
-                          to="journal"
-                          label="Journal"
-                        />
-                      </ul>
+                      <div>
+                        <ul className="flex flex-col gap-1">
+                          {menuData.map((item) => (
+                            <MenuItem
+                              key={item.id}
+                              to={item.to}
+                              label={item.label}
+                            />
+                          ))}
+                        </ul>
+                      </div>
                     )}
                   </div>
                 </Container>
@@ -118,26 +115,13 @@ const Header = () => {
             )}
 
             <ul className="hidden md:flex md:items-center md:justify-between md:w-sm">
-              <MenuItem
-                to="/"
-                label="Home"
-              />
-              <MenuItem
-                to="shop"
-                label="Shop"
-              />
-              <MenuItem
-                to="about"
-                label="About"
-              />
-              <MenuItem
-                to="contacts"
-                label="Contacts"
-              />
-              <MenuItem
-                to="journal"
-                label="Journal"
-              />
+              {menuData.map((item) => (
+                <MenuItem
+                  key={item.id}
+                  to={item.to}
+                  label={item.label}
+                />
+              ))}
             </ul>
 
             <ul className="hidden md:flex items-center">

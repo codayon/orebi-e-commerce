@@ -13,11 +13,26 @@ const Footer = () => {
             <div>
               <h4 className="mb-4 font-bold text-onyx">MENU</h4>
               <ul className="flex flex-col gap-2">
-                <MenuItem to="/" label="Home" />
-                <MenuItem to="shop" label="Shop" />
-                <MenuItem to="about" label="About" />
-                <MenuItem to="contacts" label="Contacts" />
-                <MenuItem to="journal" label="Journal" />
+                <MenuItem
+                  to="/"
+                  label="Home"
+                />
+                <MenuItem
+                  to="shop"
+                  label="Shop"
+                />
+                <MenuItem
+                  to="about"
+                  label="About"
+                />
+                <MenuItem
+                  to="contacts"
+                  label="Contacts"
+                />
+                <MenuItem
+                  to="journal"
+                  label="Journal"
+                />
               </ul>
             </div>
             <div>
