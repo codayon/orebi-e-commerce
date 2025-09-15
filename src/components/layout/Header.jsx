@@ -1,13 +1,13 @@
-import { FaCaretDown, FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
-import Container from "../common/Container";
-import Flex from "../common/Flex";
-import MenuItem from "../common/MenuItem";
-import SvgWrapper from "../common/SvgWrapper";
-import { useState } from "react";
 import { ImCross } from "react-icons/im";
-import Button from "../common/Button";
-import DropdownItem from "../common/DropdownItem";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  FaUser,
+  FaBars,
+  FaSearch,
+  FaCaretDown,
+  FaShoppingCart,
+} from "react-icons/fa";
 import {
   incrementQuantity,
   decrementQuantity,
@@ -16,22 +16,30 @@ import {
   selectCartSubtotal,
   selectCartTotal,
 } from "../../features/cartSlice";
+import Container from "../common/Container";
+import Flex from "../common/Flex";
+import MenuItem from "../common/MenuItem";
+import SvgWrapper from "../common/SvgWrapper";
+import Button from "../common/Button";
+import DropdownItem from "../common/DropdownItem";
 import ImageWrapper from "../common/ImageWrapper";
 
 const Header = () => {
   const [categoryDropdown, setCategoryDropdown] = useState(false);
   const [userDropdown, setUserDropdown] = useState(false);
   const [cartDropdown, setCartDropdown] = useState(false);
+  const [smallScreenDropdown, setSmallScreenDropdown] = useState(true);
+  const [smallScreenAccordion, setSmallScreenAccordion] = useState(true);
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const subtotal = useSelector(selectCartSubtotal);
   const total = useSelector(selectCartTotal);
 
   return (
-    <header className="bg-white sticky top-0 left-0 z-50">
-      <section className="py-2">
+    <header className="md:bg-white bg-porcelain sticky top-0 left-0 z-50">
+      <section className="py-4 shadow-2xl md:py-2 relative">
         <Container>
-          <Flex className="flex-wrap justify-between">
+          <Flex className="justify-between">
             <SvgWrapper>
               <svg
                 width="66"
@@ -49,33 +57,106 @@ const Header = () => {
               </svg>
             </SvgWrapper>
 
-            <ul className="flex flex-wrap items-center">
-              <MenuItem className="inline-block" to="/" label="Home" />
-              <MenuItem className="inline-block" to="shop" label="Shop" />
-              <MenuItem className="inline-block" to="about" label="About" />
+            <FaBars
+              className="md:hidden"
+              onClick={() => {
+                setSmallScreenDropdown(!smallScreenDropdown);
+              }}
+            />
+
+            {smallScreenDropdown && (
+              <div className="absolute md:hidden w-full top-12 left-0 bg-porcelain h-[95vh]">
+                <Container>
+                  <Flex className="my-4 relative">
+                    <input
+                      type="text"
+                      placeholder="Search Products"
+                      className="bg-white placeholder-silvermist p-2.5 w-full outline-0"
+                    />
+                    <FaSearch className="text-black absolute right-2" />
+                  </Flex>
+
+                  <div>
+                    <Flex
+                      className="justify-between mb-2 cursor-pointer"
+                      onClick={() =>
+                        setSmallScreenAccordion(!smallScreenAccordion)
+                      }
+                    >
+                      <h4 className="font-bold">Pages</h4>
+                      <span>
+                        <FaCaretDown />
+                      </span>
+                    </Flex>
+                    {smallScreenAccordion && (
+                      <ul className="flex flex-col gap-1">
+                        <MenuItem
+                          to="/"
+                          label="Home"
+                        />
+                        <MenuItem
+                          to="shop"
+                          label="Shop"
+                        />
+                        <MenuItem
+                          to="about"
+                          label="About"
+                        />
+                        <MenuItem
+                          to="contacts"
+                          label="Contacts"
+                        />
+                        <MenuItem
+                          to="journal"
+                          label="Journal"
+                        />
+                      </ul>
+                    )}
+                  </div>
+                </Container>
+              </div>
+            )}
+
+            <ul className="hidden md:flex md:items-center md:justify-between md:w-sm">
               <MenuItem
-                className="inline-block"
+                to="/"
+                label="Home"
+              />
+              <MenuItem
+                to="shop"
+                label="Shop"
+              />
+              <MenuItem
+                to="about"
+                label="About"
+              />
+              <MenuItem
                 to="contacts"
                 label="Contacts"
               />
-
-              <MenuItem className="inline-block" to="journal" label="Journal" />
+              <MenuItem
+                to="journal"
+                label="Journal"
+              />
             </ul>
 
-            <ul className="flex items-center">
+            <ul className="hidden md:flex items-center">
               <MenuItem
                 label="EN"
                 className="text-black inline-block font-bold w-8"
               />
-              <MenuItem label="RU" className="w-8 inline-block" />
+              <MenuItem
+                label="RU"
+                className="w-8 inline-block"
+              />
             </ul>
           </Flex>
         </Container>
       </section>
 
-      <section className="bg-porcelain py-4">
+      <section className="bg-porcelain hidden md:block py-4">
         <Container>
-          <Flex className="flex-wrap justify-between relative">
+          <Flex className="justify-between relative">
             <Flex
               className="gap-3 cursor-pointer"
               onClick={() => setCategoryDropdown(!categoryDropdown)}
@@ -122,7 +203,10 @@ const Header = () => {
                 label="Clothes"
                 labelClass="hover:translate-x-2.5"
               />
-              <DropdownItem label="Bags" labelClass="hover:translate-x-2.5" />
+              <DropdownItem
+                label="Bags"
+                labelClass="hover:translate-x-2.5"
+              />
               <DropdownItem
                 label="Home appliances"
                 labelClass="hover:translate-x-2.5"
