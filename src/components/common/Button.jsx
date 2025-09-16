@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-const Button = ({ className, onClick, label }) => {
+const Button = ({ className = "", onClick, label = "" }) => {
   return (
     <div
       className={twMerge(

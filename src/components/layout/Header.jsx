@@ -65,7 +65,7 @@ const Header = () => {
 
   return (
     <header className="md:bg-white bg-porcelain sticky top-0 left-0 z-50">
-      <section className="py-4 shadow-2xl md:py-2 relative">
+      <section className="py-4 md:py-2 relative">
         <Container>
           <Flex className="justify-between">
             <SvgWrapper>

@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-const SvgWrapper = ({ onClick, className, children }) => {
+const SvgWrapper = ({ onClick, className = "", children }) => {
   return (
     <div
       onClick={onClick}

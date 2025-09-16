@@ -5,20 +5,20 @@ import { FaTruck, FaUndoAlt } from "react-icons/fa";
 
 const Information = () => {
   return (
-    <section className="pt-6 pb-8 border-b border-fog">
+    <section className="bg-white border-fog pt-6 pb-8 border-b">
       <Container>
         <Flex className={"justify-between"}>
           <Flex className={"gap-3"}>
-            <PiNumberTwoBold />
-            <p className="text-stone">Two years warranty</p>
+            <PiNumberTwoBold className="text-2xl" />
+            <p className="text-stone">Two Years Warranty</p>
           </Flex>
           <Flex className={"gap-3"}>
-            <FaTruck />
-            <p className="text-stone">Free shipping</p>
+            <FaTruck className="text-xl" />
+            <p className="text-stone">Free Shipping</p>
           </Flex>
           <Flex className={"gap-3"}>
-            <FaUndoAlt />
-            <p className="text-stone">Return policy in 30 days</p>
+            <FaUndoAlt className="text-xl" />
+            <p className="text-stone">Return Policy in 30 Days</p>
           </Flex>
         </Flex>
       </Container>

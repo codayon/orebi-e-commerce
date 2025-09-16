@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-const Container = ({ className, children }) => {
+const Container = ({ className = "", children }) => {
   return (
     <div
       className={twMerge(

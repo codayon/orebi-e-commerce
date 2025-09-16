@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-const DropdownItem = ({ divClass, labelClass, label }) => {
+const DropdownItem = ({ divClass = "", labelClass = "", label = "" }) => {
   return (
     <div
       className={twMerge(

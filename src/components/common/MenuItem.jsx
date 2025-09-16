@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { twMerge } from "tailwind-merge";
 
-const MenuItem = ({ to, label, className }) => {
+const MenuItem = ({ to = "", label = "", className = "" }) => {
   return (
     <li>
       <Link

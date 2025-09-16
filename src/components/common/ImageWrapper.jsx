@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-const ImageWrapper = ({ src, alt, className, imgClassName }) => {
+const ImageWrapper = ({
+  src = "",
+  alt = "",
+  className = "",
+  imgClassName = "",
+}) => {
   const [loaded, setLoaded] = useState(false);
 
   return (
     <div
       className={twMerge(
-        "relative overflow-hidden bg-gray-200 flex items-center justify-center",
+        "relative overflow-hidden bg-gray-200 flex items-center justify-center select-none",
         className
       )}
     >

@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-const Flex = ({ onClick, children, className }) => {
+const Flex = ({ onClick, children, className = "" }) => {
   return (
     <div
       onClick={onClick}
