@@ -26,9 +26,9 @@ const Banner = () => {
             />
           </div>
           <ImageWrapper
-            src="https://res.cloudinary.com/droh6dnbd/image/upload/v1758001214/headphone_ext6ps.png"
-            alt="headphone_ext6ps.png"
-            className="bg-transparent aspect-[500/500]"
+            src="https://res.cloudinary.com/droh6dnbd/image/upload/v1758009728/headphone_i29btl.webp"
+            alt="headphone_i29btl"
+            className="bg-snow aspect-square md:h-[500px] md:w-[500px]"
           />
           <div className="flex items-center justify-center pt-4 md:hidden">
             <Button
