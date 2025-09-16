@@ -25,11 +25,12 @@ const Banner = () => {
               label="Shop Now"
             />
           </div>
-          <ImageWrapper
-            src="https://res.cloudinary.com/droh6dnbd/image/upload/v1758009728/headphone_i29btl.webp"
-            alt="headphone_i29btl"
-            className="bg-snow aspect-square md:h-[500px] md:w-[500px]"
-          />
+          <div className="md:w-[500px] md:h-[500px]">
+            <img
+              src="https://res.cloudinary.com/droh6dnbd/image/upload/v1758009728/headphone_i29btl.webp"
+              alt="headphone_i29btl.webp"
+            />
+          </div>
           <div className="flex items-center justify-center pt-4 md:hidden">
             <Button
               className="inline-block"
