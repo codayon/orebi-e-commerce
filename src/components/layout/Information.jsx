@@ -5,7 +5,7 @@ import { FaTruck, FaUndoAlt } from "react-icons/fa";
 
 const Information = () => {
   return (
-    <section className="bg-white border-fog pt-6 pb-8 border-b">
+    <section className="bg-white border-fog pt-6 pb-8 border-b hidden md:block">
       <Container>
         <Flex className={"justify-between"}>
           <Flex className={"gap-3"}>
