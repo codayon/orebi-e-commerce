@@ -1,7 +1,5 @@
 import Button from "../common/Button";
 import Container from "../common/Container";
-import Flex from "../common/Flex";
-import ImageWrapper from "../common/ImageWrapper";
 import Information from "./Information";
 
 const Banner = () => {
