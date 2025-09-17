@@ -7,7 +7,7 @@ const Banner = () => {
     <section className="bg-snow">
       <Container>
         <div className="md:flex items-center justify-around py-16">
-          <div className="">
+          <div>
             <h1 className="font-bold text-4xl md:text-5xl text-center md:text-start">
               Final Offer
             </h1>
