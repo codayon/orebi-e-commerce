@@ -1,22 +1,23 @@
 import Flex from "./Flex";
+import Button from "./Button";
 import ImageWrapper from "./ImageWrapper";
 import { FaHeart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cartSlice";
-import Button from "./Button";
+import { twMerge } from "tailwind-merge";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, className = "" }) => {
   const dispatch = useDispatch();
   const handleAddToCart = () => {
     dispatch(addToCart(product));
   };
 
   return (
-    <div className={"bg-white relative border w-[340px]"}>
+    <div className={twMerge("bg-white relative border", className)}>
       <ImageWrapper
         src={product.thumbnail}
         alt={product.title}
-        className="bg-cloud aspect-square cursor-pointer"
+        className="aspect-square cursor-pointer"
       />
 
       <div className="m-2">
@@ -33,15 +34,13 @@ const ProductCard = ({ product }) => {
         />
       </div>
 
-      <div className="absolute top-4 left-0 flex items-center justify-between w-[338px]">
-        <div className="bg-onyx text-white px-4 py-2 font-bold ml-4">
-          {product.discountPercentage > 0
-            ? `${Math.round(product.discountPercentage)}%`
-            : "New"}
-        </div>
-        <div className="bg-onyx text-white rounded-full p-3 mr-4 cursor-pointer">
-          <FaHeart />
-        </div>
+      <div className="bg-onyx text-white absolute top-4 left-4 px-4 py-2 font-bold">
+        {product.discountPercentage > 0
+          ? `${Math.round(product.discountPercentage)}%`
+          : "New"}
+      </div>
+      <div className="bg-onyx text-white absolute top-4 right-4 rounded-full p-3 cursor-pointer">
+        <FaHeart />
       </div>
     </div>
   );

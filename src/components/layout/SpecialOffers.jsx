@@ -28,6 +28,7 @@ const SpecialOffers = () => {
               ))
             : products.map((product) => (
                 <ProductCard
+                  className="w-[340px]"
                   key={product.id}
                   product={product}
                 />
