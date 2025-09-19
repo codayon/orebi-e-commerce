@@ -1,9 +1,10 @@
 const SkeletonCard = () => {
   return (
-    <div className="bg-white shadow p-2 flex flex-col min-w-[340px] animate-pulse">
-      <div className="aspect-[1/1] bg-gray-300"></div>
-      <div className="py-8 space-y-2">
-        <div className="h-3 bg-gray-200 rounded w-full"></div>
+    <div className="bg-white shadow border flex flex-col min-w-[340px] animate-pulse">
+      <div className="bg-gray-300 aspect-[1/1]"></div>
+      <div className="m-2 space-y-2">
+        <div className="bg-gray-200 py-[18px] w-full animate-pulse"></div>
+        <div className="bg-gray-200 py-[26px] w-full animate-pulse"></div>
       </div>
     </div>
   );
