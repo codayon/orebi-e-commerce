@@ -23,7 +23,7 @@ const Banner = () => {
               label="Shop Now"
             />
           </div>
-          <div className="md:w-[500px] md:h-[500px]">
+          <div className="w-[288px] h-[288px] md:w-[500px] md:h-[500px]">
             <img
               src="https://res.cloudinary.com/droh6dnbd/image/upload/v1758009728/headphone_i29btl.webp"
               alt="headphone_i29btl.webp"
