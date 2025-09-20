@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import Container from "../common/Container";
 import ProductCard from "../common/ProductCard";
 import SkeletonCard from "../common/SkeletonCard";
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
@@ -72,10 +72,10 @@ const BestSeller = () => {
             </Swiper>
           )}
 
-          <button className="swiper-prev bg-ash text-white absolute left-2 top-56 rounded-full p-5 z-20">
+          <button className="swiper-prev bg-ash text-white absolute left-2 top-48 md:top-56 rounded-full p-5 z-20">
             <FaLongArrowAltLeft />
           </button>
-          <button className="swiper-next bg-ash text-white absolute right-2 top-56 rounded-full p-5 z-20">
+          <button className="swiper-next bg-ash text-white absolute right-2 top-48 md:top-56 rounded-full p-5 z-20">
             <FaLongArrowAltRight />
           </button>
         </div>

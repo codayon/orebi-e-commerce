@@ -1,15 +1,19 @@
-import { useState, useEffect } from "react";
 import Container from "../common/Container";
-import Flex from "../common/Flex";
 import ProductCard from "../common/ProductCard";
 import SkeletonCard from "../common/SkeletonCard";
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const SpecialOffers = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://dummyjson.com/products?limit=4&skip=8")
+    fetch("https://dummyjson.com/products?limit=5&skip=8")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.products);
@@ -21,19 +25,60 @@ const SpecialOffers = () => {
     <section className="py-12">
       <Container>
         <h4 className="text-onyx font-bold text-4xl ">Special Offers</h4>
-        <Flex className={"flex-wrap justify-between py-12"}>
-          {loading
-            ? Array.from({ length: 4 }).map((_, idx) => (
-                <SkeletonCard key={idx} />
-              ))
-            : products.map((product) => (
-                <ProductCard
-                  className="w-[340px]"
-                  key={product.id}
-                  product={product}
-                />
+        <div className="pt-12 w-full relative">
+          {loading ? (
+            <div className="flex flex-wrap gap-20">
+              {Array.from({ length: 4 }).map((_, idx) => (
+                <div
+                  key={idx}
+                  className={`
+                    ${idx > 0 ? "hidden sm:block" : ""} 
+                    ${idx > 1 ? "hidden md:block" : ""}
+                  `}
+                >
+                  <SkeletonCard />
+                </div>
               ))}
-        </Flex>
+            </div>
+          ) : (
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={20}
+              slidesPerView={1}
+              navigation={{
+                prevEl: ".swiper-prev",
+                nextEl: ".swiper-next",
+              }}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 4,
+                  spaceBetween: 80,
+                },
+                1024: {
+                  slidesPerView: 4,
+                  spaceBetween: 80,
+                },
+              }}
+            >
+              {products.map((product) => (
+                <SwiperSlide key={product.id}>
+                  <ProductCard product={product} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
+
+          <button className="swiper-prev bg-ash text-white absolute left-2 top-48 md:top-56 rounded-full p-5 z-20">
+            <FaLongArrowAltLeft />
+          </button>
+          <button className="swiper-next bg-ash text-white absolute right-2 top-48 md:top-56 rounded-full p-5 z-20">
+            <FaLongArrowAltRight />
+          </button>
+        </div>
       </Container>
     </section>
   );
