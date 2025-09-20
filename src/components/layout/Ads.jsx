@@ -3,7 +3,7 @@ import Container from "../common/Container";
 
 const Ads = () => {
   return (
-    <section className="pt-5 md:pt-24 pb-12">
+    <section className="pt-5 md:pt-24 pb-2.5 md:pb-12">
       <Container>
         <div className="flex flex-col md:flex-row gap-3.5 md:gap-10">
           <div className="bg-[url('https://res.cloudinary.com/droh6dnbd/image/upload/v1758033409/ad-1_eeudo3.webp')] bg-cover bg-center bg-no-repeat md:flex-1 flex flex-col justify-end">

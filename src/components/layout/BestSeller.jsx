@@ -22,10 +22,10 @@ const BestSeller = () => {
   }, []);
 
   return (
-    <section className="py-12">
+    <section className="py-2.5 md:py-12">
       <Container>
-        <h4 className="text-onyx font-bold text-4xl">Best Sellers</h4>
-        <div className="pt-12 w-full relative">
+        <h4 className="text-onyx font-bold text-2xl md:text-4xl">Best Sellers</h4>
+        <div className="pt-3.5 md:pt-12 w-full relative">
           {loading ? (
             <div className="flex flex-wrap gap-20">
               {Array.from({ length: 4 }).map((_, idx) => (
