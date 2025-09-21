@@ -49,15 +49,26 @@ const data = {
 };
 
 const Header = () => {
-  const [categoryDropdown, setCategoryDropdown] = useState(false);
-  const [userDropdown, setUserDropdown] = useState(false);
-  const [cartDropdown, setCartDropdown] = useState(false);
-  const [smallScreenDropdown, setSmallScreenDropdown] = useState(false);
+  const [overlays, setOverlays] = useState({
+    category: false,
+    user: false,
+    cart: false,
+    smallScreen: false,
+  });
+
+  const handleOverlays = (name) => {
+    setOverlays((prev) => ({
+      ...prev,
+      [name]: !prev[name],
+    }));
+  };
+
   const [accordion, setAccordion] = useState({
-    menus: true,
-    categories: true,
+    menus: false,
+    categories: false,
     accounts: false,
   });
+
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const subtotal = useSelector(selectCartSubtotal);
@@ -65,7 +76,7 @@ const Header = () => {
 
   return (
     <header className="md:bg-white bg-porcelain sticky top-0 left-0 z-50">
-      <section className="py-4 md:py-2 relative">
+      <section className="py-5 md:py-2 relative">
         <Container>
           <Flex className="justify-between">
             <SvgWrapper>
@@ -87,14 +98,12 @@ const Header = () => {
 
             <div
               className="md:hidden"
-              onClick={() => {
-                setSmallScreenDropdown(!smallScreenDropdown);
-              }}
+              onClick={() => handleOverlays("smallScreen")}
             >
-              {smallScreenDropdown ? <ImCross /> : <FaBars />}
+              {overlays.smallScreen ? <ImCross /> : <FaBars />}
             </div>
 
-            {smallScreenDropdown && (
+            {overlays.smallScreen && (
               <div className="absolute md:hidden w-full top-12 left-0 bg-porcelain h-[95vh]">
                 <Container>
                   <Flex className="my-4 relative">
@@ -222,7 +231,7 @@ const Header = () => {
           <Flex className="justify-between relative">
             <Flex
               className="gap-3 cursor-pointer"
-              onClick={() => setCategoryDropdown(!categoryDropdown)}
+              onClick={() => handleOverlays("category")}
             >
               <SvgWrapper>
                 <svg
@@ -247,7 +256,9 @@ const Header = () => {
 
             <div
               className={`absolute z-10 top-14 left-0 min-w-60 select-none ${
-                categoryDropdown ? "opacity-100 visible" : "opacity-0 invisible"
+                overlays.category
+                  ? "opacity-100 visible"
+                  : "opacity-0 invisible"
               }`}
             >
               {data.categories.map((category) => (
@@ -271,7 +282,7 @@ const Header = () => {
             <Flex className="gap-10">
               <Flex
                 className="gap-2 cursor-pointer"
-                onClick={() => setUserDropdown(!userDropdown)}
+                onClick={() => handleOverlays("user")}
               >
                 <FaUser />
                 <FaCaretDown />
@@ -279,7 +290,7 @@ const Header = () => {
 
               <div
                 className={`absolute z-20 top-14 right-14 min-w-40 text-center ${
-                  userDropdown ? "opacity-100 visible" : "opacity-0 invisible"
+                  overlays.user ? "opacity-100 visible" : "opacity-0 invisible"
                 }`}
               >
                 <DropdownItem label="My Account" />
@@ -288,11 +299,11 @@ const Header = () => {
 
               <FaShoppingCart
                 className="cursor-pointer"
-                onClick={() => setCartDropdown(!cartDropdown)}
+                onClick={() => handleOverlays("cart")}
               />
               <div
                 className={`absolute z-10 min-w-xl max-h-[80vh] top-14 right-0 overflow-y-auto ${
-                  cartDropdown ? "opacity-100 visible" : "opacity-0 invisible"
+                  overlays.cart ? "opacity-100 visible" : "opacity-0 invisible"
                 }`}
               >
                 <div className="bg-onyx px-5">
