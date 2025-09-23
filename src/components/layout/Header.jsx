@@ -1,4 +1,5 @@
 import { ImCross } from "react-icons/im";
+import { NavLink } from "react-router";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -204,11 +205,19 @@ const Header = () => {
 
             <ul className="hidden md:flex md:items-center md:justify-between md:w-sm">
               {data.menus.map((menu) => (
-                <MenuItem
+                <li
                   key={menu.id}
-                  to={menu.to}
-                  label={menu.label}
-                />
+                  className="font-medium transition-all duration-200 select-none text-center"
+                >
+                  <NavLink
+                    to={menu.to}
+                    className={({ isActive }) =>
+                      isActive ? "text-onyx" : "text-graphite hover:text-onyx"
+                    }
+                  >
+                    {menu.label}
+                  </NavLink>
+                </li>
               ))}
             </ul>
 
