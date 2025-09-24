@@ -55,6 +55,7 @@ const Header = () => {
     user: false,
     cart: false,
     smallScreen: false,
+    smallScreenCart: false,
   });
 
   const handleOverlays = (name) => {
@@ -97,12 +98,104 @@ const Header = () => {
               </svg>
             </SvgWrapper>
 
-            <div
-              className="md:hidden"
-              onClick={() => handleOverlays("smallScreen")}
-            >
-              {overlays.smallScreen ? <ImCross /> : <FaBars />}
-            </div>
+            <Flex className="gap-4 md:hidden">
+              <div onClick={() => handleOverlays("smallScreenCart")}>
+                <FaShoppingCart />
+              </div>
+              <div onClick={() => handleOverlays("smallScreen")}>
+                {overlays.smallScreen ? <ImCross /> : <FaBars />}
+              </div>
+            </Flex>
+            {overlays.smallScreenCart && (
+              <div className="absolute md:hidden w-full top-12 left-0 bg-porcelain h-[95vh] overflow-y-auto">
+                <Container>
+                  <div className="py-5">
+                    {cartItems.length === 0 ? (
+                      <div className="py-10 text-center">
+                        <p>No items in cart</p>
+                      </div>
+                    ) : (
+                      <>
+                        {cartItems.map((item) => (
+                          <Flex
+                            key={item.id}
+                            className="justify-between py-1"
+                          >
+                            <div className="w-32 font-bold">
+                              <h4 className="truncate">{item.title}</h4>
+                              <h4>${item.price}</h4>
+                            </div>
+
+                            <Flex className="text-graphite px-3 py-1.5 gap-2 border text-center">
+                              <button
+                                className="cursor-pointer"
+                                onClick={() =>
+                                  dispatch(decrementQuantity(item.id))
+                                }
+                              >
+                                -
+                              </button>
+
+                              <span className="w-6 select-none">
+                                {item.quantity}
+                              </span>
+
+                              <button
+                                className="cursor-pointer"
+                                onClick={() =>
+                                  dispatch(incrementQuantity(item.id))
+                                }
+                              >
+                                +
+                              </button>
+                            </Flex>
+
+                            <ImCross
+                              className="text-firebrick cursor-pointer"
+                              onClick={() => dispatch(removeFromCart(item.id))}
+                            />
+                          </Flex>
+                        ))}
+
+                        <div className="pb-10">
+                          <div className="flex flex-col gap-2 pb-5">
+                            <Flex className="justify-between">
+                              <h4 className="">Subtotal</h4>
+                              <h4 className="font-bold">
+                                ${subtotal.toFixed(2)}
+                              </h4>
+                            </Flex>
+
+                            <Flex className="justify-between">
+                              <h4 className="">Discount</h4>
+                              <h4 className="font-bold">
+                                ${(subtotal - total).toFixed(2)}
+                              </h4>
+                            </Flex>
+
+                            <Flex className="justify-between">
+                              <h4 className="">Total</h4>
+                              <h4 className="font-bold">${total.toFixed(2)}</h4>
+                            </Flex>
+                          </div>
+
+                          <Flex className="justify-between">
+                            <Button
+                              className="text-onyx border-onyx bg-transparent py-4 px-8"
+                              label="View Cart"
+                            />
+                            <Button
+                              className="border-transparent py-4 px-8"
+                              label="Checkout"
+                            />
+                          </Flex>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </Container>
+              </div>
+            )}
 
             {overlays.smallScreen && (
               <div className="absolute md:hidden w-full top-12 left-0 bg-porcelain h-[95vh]">
