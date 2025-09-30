@@ -1,10 +1,10 @@
-import { twMerge } from "tailwind-merge";
+import cn from "@/utils/cn";
 
 const SvgWrapper = ({ onClick, className = "", children }) => {
   return (
     <div
       onClick={onClick}
-      className={twMerge("cursor-pointer", className)}
+      className={cn("cursor-pointer", className)}
     >
       {children}
     </div>

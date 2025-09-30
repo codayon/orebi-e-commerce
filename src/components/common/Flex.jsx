@@ -1,10 +1,10 @@
-import { twMerge } from "tailwind-merge";
+import cn from "@/utils/cn";
 
 const Flex = ({ onClick, children, className = "" }) => {
   return (
     <div
       onClick={onClick}
-      className={twMerge("flex items-center", className)}
+      className={cn("flex items-center", className)}
     >
       {children}
     </div>

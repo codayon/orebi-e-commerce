@@ -1,7 +1,7 @@
 import { FaHeart } from "react-icons/fa";
-import { twMerge } from "tailwind-merge";
 import { useDispatch } from "react-redux";
 
+import cn from "@/utils/cn";
 import Flex from "./Flex";
 import Button from "./Button";
 import ImageWrapper from "./ImageWrapper";
@@ -14,7 +14,7 @@ const ProductCard = ({ product, className = "" }) => {
   };
 
   return (
-    <div className={twMerge("bg-white relative border", className)}>
+    <div className={cn("bg-white relative border", className)}>
       <ImageWrapper
         src={product.thumbnail}
         alt={product.title}

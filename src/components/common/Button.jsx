@@ -1,9 +1,9 @@
-import { twMerge } from "tailwind-merge";
+import cn from "@/utils/cn";
 
 const Button = ({ className = "", onClick, label = "" }) => {
   return (
     <div
-      className={twMerge(
+      className={cn(
         "text-white bg-onyx border-onyx border-2 text-sm text-center py-3.5 px-16 font-bold cursor-pointer select-none",
         className
       )}

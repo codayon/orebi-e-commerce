@@ -1,4 +1,4 @@
-import { twMerge } from "tailwind-merge";
+import cn from "@/utils/cn";
 
 const ImageWrapper = ({
   src = "",
@@ -8,7 +8,7 @@ const ImageWrapper = ({
 }) => {
   return (
     <div
-      className={twMerge(
+      className={cn(
         "relative overflow-hidden bg-fog flex items-center justify-center select-none",
         className
       )}
@@ -16,7 +16,7 @@ const ImageWrapper = ({
       <img
         src={src}
         alt={alt}
-        className={twMerge(
+        className={cn(
           "w-full h-full object-cover transition-opacity duration-500",
           imgClassName
         )}
