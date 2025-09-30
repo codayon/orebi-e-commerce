@@ -7,7 +7,7 @@ import About from "./pages/About";
 import Contacts from "./pages/Contacts";
 import Journal from "./pages/Journal";
 
-const App = () => {
+export default function App() {
   return (
     <Routes>
       <Route
@@ -37,6 +37,4 @@ const App = () => {
       </Route>
     </Routes>
   );
-};
-
-export default App;
+}

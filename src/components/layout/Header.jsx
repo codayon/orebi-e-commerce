@@ -50,7 +50,7 @@ const data = {
   ],
 };
 
-const Header = () => {
+export default function Header() {
   const [overlays, setOverlays] = useState({
     category: false,
     user: false,
@@ -513,6 +513,4 @@ const Header = () => {
       </section>
     </header>
   );
-};
-
-export default Header;
+}

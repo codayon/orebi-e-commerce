@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   FaCaretDown,
   FaCaretUp,
@@ -10,7 +11,6 @@ import Container from "../common/Container";
 import Flex from "../common/Flex";
 import MenuItem from "../common/MenuItem";
 import SvgWrapper from "../common/SvgWrapper";
-import { useState } from "react";
 
 const data = {
   menu: [
@@ -36,7 +36,7 @@ const data = {
   ],
 };
 
-const Footer = () => {
+export default function Footer() {
   const [accordion, setAccordion] = useState({
     menu: false,
     help: false,
@@ -219,6 +219,4 @@ const Footer = () => {
       </section>
     </footer>
   );
-};
-
-export default Footer;
+}

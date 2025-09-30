@@ -1,12 +1,13 @@
 import cn from "@/utils/cn";
 
-const DropdownItem = ({ divClass = "", labelClass = "", label = "" }) => {
+export default function DropdownItem({
+  divClass = "",
+  labelClass = "",
+  label = "",
+}) {
   return (
     <div
-      className={cn(
-        "bg-onyx border-obsidian border cursor-pointer",
-        divClass
-      )}
+      className={cn("bg-onyx border-obsidian border cursor-pointer", divClass)}
     >
       <h4
         className={cn(
@@ -18,6 +19,4 @@ const DropdownItem = ({ divClass = "", labelClass = "", label = "" }) => {
       </h4>
     </div>
   );
-};
-
-export default DropdownItem;
+}

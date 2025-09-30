@@ -9,7 +9,7 @@ import Container from "../common/Container";
 import ProductCard from "../common/ProductCard";
 import SkeletonCard from "../common/SkeletonCard";
 
-const SpecialOffers = () => {
+export default function SpecialOffers() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -85,6 +85,4 @@ const SpecialOffers = () => {
       </Container>
     </section>
   );
-};
-
-export default SpecialOffers;
+}

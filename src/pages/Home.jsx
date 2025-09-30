@@ -5,7 +5,7 @@ import BestSeller from "@/components/layout/BestSeller";
 import NewArrivals from "@/components/layout/NewArrivals";
 import SpecialOffers from "@/components/layout/SpecialOffers";
 
-const Home = () => {
+export default function Home() {
   return (
     <>
       <Banner />
@@ -16,6 +16,4 @@ const Home = () => {
       <SpecialOffers />
     </>
   );
-};
-
-export default Home;
+}

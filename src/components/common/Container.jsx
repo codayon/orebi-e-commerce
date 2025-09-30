@@ -1,6 +1,6 @@
 import cn from "@/utils/cn";
 
-const Container = ({ className = "", children }) => {
+export default function Container({ className = "", children }) {
   return (
     <div
       className={cn(
@@ -11,6 +11,4 @@ const Container = ({ className = "", children }) => {
       {children}
     </div>
   );
-};
-
-export default Container;
+}

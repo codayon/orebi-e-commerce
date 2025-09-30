@@ -2,7 +2,7 @@ import Button from "../common/Button";
 import Container from "../common/Container";
 import ImageWrapper from "../common/ImageWrapper";
 
-const BannerAd = () => {
+export default function BannerAd() {
   return (
     <section className="py-2.5 md:py-12">
       <Container>
@@ -29,6 +29,4 @@ const BannerAd = () => {
       </Container>
     </section>
   );
-};
-
-export default BannerAd;
+}

@@ -1,6 +1,6 @@
 import cn from "@/utils/cn";
 
-const Flex = ({ onClick, children, className = "" }) => {
+export default function Flex({ onClick, children, className = "" }) {
   return (
     <div
       onClick={onClick}
@@ -9,6 +9,4 @@ const Flex = ({ onClick, children, className = "" }) => {
       {children}
     </div>
   );
-};
-
-export default Flex;
+}

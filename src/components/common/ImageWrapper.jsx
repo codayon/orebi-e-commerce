@@ -1,11 +1,11 @@
 import cn from "@/utils/cn";
 
-const ImageWrapper = ({
+export default function ImageWrapper({
   src = "",
   alt = "",
   className = "",
   imgClassName = "",
-}) => {
+}) {
   return (
     <div
       className={cn(
@@ -23,6 +23,4 @@ const ImageWrapper = ({
       />
     </div>
   );
-};
-
-export default ImageWrapper;
+}

@@ -1,6 +1,6 @@
 import cn from "@/utils/cn";
 
-const Button = ({ className = "", onClick, label = "" }) => {
+export default function Button({ className = "", onClick, label = "" }) {
   return (
     <div
       className={cn(
@@ -12,6 +12,4 @@ const Button = ({ className = "", onClick, label = "" }) => {
       {label}
     </div>
   );
-};
-
-export default Button;
+}

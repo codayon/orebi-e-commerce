@@ -1,6 +1,5 @@
 import "swiper/css";
 import "swiper/css/navigation";
-
 import { Navigation } from "swiper/modules";
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,7 +9,7 @@ import Container from "../common/Container";
 import ProductCard from "../common/ProductCard";
 import SkeletonCard from "../common/SkeletonCard";
 
-const NewArrivals = () => {
+export default function NewArrivals() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -86,6 +85,4 @@ const NewArrivals = () => {
       </Container>
     </section>
   );
-};
-
-export default NewArrivals;
+}

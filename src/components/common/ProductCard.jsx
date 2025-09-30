@@ -7,7 +7,7 @@ import Button from "./Button";
 import ImageWrapper from "./ImageWrapper";
 import { addToCart } from "@/features/cartSlice";
 
-const ProductCard = ({ product, className = "" }) => {
+export default function ProductCard({ product, className = "" }) {
   const dispatch = useDispatch();
   const handleAddToCart = () => {
     dispatch(addToCart(product));
@@ -45,6 +45,4 @@ const ProductCard = ({ product, className = "" }) => {
       </div>
     </div>
   );
-};
-
-export default ProductCard;
+}

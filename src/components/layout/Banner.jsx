@@ -2,7 +2,7 @@ import Button from "../common/Button";
 import Container from "../common/Container";
 import Information from "./Information";
 
-const Banner = () => {
+export default function Banner() {
   return (
     <section className="bg-snow">
       <Container>
@@ -40,6 +40,4 @@ const Banner = () => {
       <Information />
     </section>
   );
-};
-
-export default Banner;
+}

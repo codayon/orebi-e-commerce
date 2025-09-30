@@ -4,7 +4,7 @@ import { FaTruck, FaUndoAlt } from "react-icons/fa";
 import Flex from "../common/Flex";
 import Container from "../common/Container";
 
-const Information = () => {
+export default function Information() {
   return (
     <section className="bg-white border-fog pt-6 pb-8 border-b hidden md:block">
       <Container>
@@ -25,6 +25,4 @@ const Information = () => {
       </Container>
     </section>
   );
-};
-
-export default Information;
+}

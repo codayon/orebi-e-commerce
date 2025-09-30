@@ -1,7 +1,7 @@
 import Button from "../common/Button";
 import Container from "../common/Container";
 
-const Ads = () => {
+export default function Ads() {
   return (
     <section className="pt-5 md:pt-24 pb-2.5 md:pb-12">
       <Container>
@@ -66,6 +66,4 @@ const Ads = () => {
       </Container>
     </section>
   );
-};
-
-export default Ads;
+}

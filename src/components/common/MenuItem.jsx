@@ -1,7 +1,8 @@
-import cn from "@/utils/cn";
 import { Link } from "react-router";
 
-const MenuItem = ({ to = "", label = "", className = "" }) => {
+import cn from "@/utils/cn";
+
+export default function MenuItem({ to = "", label = "", className = "" }) {
   return (
     <li>
       <Link
@@ -15,6 +16,4 @@ const MenuItem = ({ to = "", label = "", className = "" }) => {
       </Link>
     </li>
   );
-};
-
-export default MenuItem;
+}
