@@ -1,12 +1,14 @@
+import "swiper/css";
+import "swiper/css/navigation";
+
+import { Navigation } from "swiper/modules";
+import { useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+
 import Container from "../common/Container";
 import ProductCard from "../common/ProductCard";
 import SkeletonCard from "../common/SkeletonCard";
-import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
-import { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
 
 const NewArrivals = () => {
   const [products, setProducts] = useState([]);

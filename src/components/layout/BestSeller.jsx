@@ -1,12 +1,14 @@
+import "swiper/css";
+import "swiper/css/navigation";
+
+import { Navigation } from "swiper/modules";
+import { useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
+
 import Container from "../common/Container";
 import ProductCard from "../common/ProductCard";
 import SkeletonCard from "../common/SkeletonCard";
-import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
-import { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
 
 const BestSeller = () => {
   const [products, setProducts] = useState([]);
@@ -24,7 +26,9 @@ const BestSeller = () => {
   return (
     <section className="py-2.5 md:py-12">
       <Container>
-        <h4 className="text-onyx font-bold text-2xl md:text-4xl">Best Sellers</h4>
+        <h4 className="text-onyx font-bold text-2xl md:text-4xl">
+          Best Sellers
+        </h4>
         <div className="pt-3.5 md:pt-12 w-full relative">
           {loading ? (
             <div className="flex flex-wrap gap-20">

@@ -45,10 +45,14 @@ const Ads = () => {
 
             <div className="bg-[url('https://res.cloudinary.com/droh6dnbd/image/upload/v1758033409/ad-3_xj7qtu.webp')] bg-cover bg-center bg-no-repeat md:flex-1">
               <div className="pb-2.5 pt-6 md:py-16 pl-2.5 md:pl-12 max-w-44 md:max-w-full">
-                <h3 className="font-bold text-xl md:text-4xl">Furniture Sale</h3>
+                <h3 className="font-bold text-xl md:text-4xl">
+                  Furniture Sale
+                </h3>
                 <p className="text-stone text-sm md:text-base md:flex md:items-center pt-1 pb-2 md:py-8 max-w-32 md:max-w-full">
                   Up to
-                  <span className="text-onyx font-bold text-base md:text-xl px-1">50%</span>
+                  <span className="text-onyx font-bold text-base md:text-xl px-1">
+                    50%
+                  </span>
                   sale for all furniture items!
                 </p>
                 <Button

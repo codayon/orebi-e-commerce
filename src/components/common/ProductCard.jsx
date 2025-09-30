@@ -1,10 +1,11 @@
+import { FaHeart } from "react-icons/fa";
+import { twMerge } from "tailwind-merge";
+import { useDispatch } from "react-redux";
+
 import Flex from "./Flex";
 import Button from "./Button";
 import ImageWrapper from "./ImageWrapper";
-import { FaHeart } from "react-icons/fa";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../features/cartSlice";
-import { twMerge } from "tailwind-merge";
+import { addToCart } from "@/features/cartSlice";
 
 const ProductCard = ({ product, className = "" }) => {
   const dispatch = useDispatch();

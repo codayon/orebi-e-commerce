@@ -1,7 +1,8 @@
-import Container from "../common/Container";
-import Flex from "../common/Flex";
 import { PiNumberTwoBold } from "react-icons/pi";
 import { FaTruck, FaUndoAlt } from "react-icons/fa";
+
+import Flex from "../common/Flex";
+import Container from "../common/Container";
 
 const Information = () => {
   return (

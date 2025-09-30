@@ -10,6 +10,14 @@ import {
   FaCaretDown,
   FaShoppingCart,
 } from "react-icons/fa";
+
+import Flex from "../common/Flex";
+import Button from "../common/Button";
+import MenuItem from "../common/MenuItem";
+import Container from "../common/Container";
+import SvgWrapper from "../common/SvgWrapper";
+import DropdownItem from "../common/DropdownItem";
+import ImageWrapper from "../common/ImageWrapper";
 import {
   incrementQuantity,
   decrementQuantity,
@@ -17,14 +25,7 @@ import {
   selectCartItems,
   selectCartSubtotal,
   selectCartTotal,
-} from "../../features/cartSlice";
-import Container from "../common/Container";
-import Flex from "../common/Flex";
-import MenuItem from "../common/MenuItem";
-import SvgWrapper from "../common/SvgWrapper";
-import Button from "../common/Button";
-import DropdownItem from "../common/DropdownItem";
-import ImageWrapper from "../common/ImageWrapper";
+} from "@/features/cartSlice";
 
 const data = {
   menus: [

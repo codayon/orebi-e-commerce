@@ -1,4 +1,3 @@
-import Flex from "../common/Flex";
 import Button from "../common/Button";
 import Container from "../common/Container";
 import ImageWrapper from "../common/ImageWrapper";
